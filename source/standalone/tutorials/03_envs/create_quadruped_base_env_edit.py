@@ -6,7 +6,7 @@
 
 """
     # Run the script
-    python source/standalone/tutorials/04_envs/quadruped_base_env.py --num_envs 32
+    python source/standalone/tutorials/04_envs/quadruped_base_env_edit.py --num_envs 32
 
 """
 import argparse
@@ -45,7 +45,7 @@ from omni.isaac.lab.utils.noise import AdditiveUniformNoiseCfg as Unoise
 
 
 # Pre-defined configs
-from omni.isaac.lab.terrains.config.rough import ROUGH_TERRAINS_CFG  # isort: skip
+from omni.isaac.lab.terrains.config.rough2 import ROUGH_TERRAINS_CFG2  # isort: skip
 from omni.isaac.lab_assets.anymal import ANYMAL_C_CFG  # isort: skip
 
 
@@ -72,7 +72,7 @@ class MySceneCfg(InteractiveSceneCfg):
     terrain = TerrainImporterCfg(
         prim_path="/World/ground",
         terrain_type="generator",
-        terrain_generator=ROUGH_TERRAINS_CFG,
+        terrain_generator=ROUGH_TERRAINS_CFG2,
         max_init_terrain_level=5,
         collision_group=-1,
         physics_material=sim_utils.RigidBodyMaterialCfg(
