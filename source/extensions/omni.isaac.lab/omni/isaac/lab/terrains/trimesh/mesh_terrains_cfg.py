@@ -27,12 +27,9 @@ class MeshPlaneTerrainCfg(SubTerrainBaseCfg):
 @configclass
 class MeshPyramidStairsTerrainCfg(SubTerrainBaseCfg):
     """Configuration for a pyramid stair mesh terrain."""
-
     function = mesh_terrains.pyramid_stairs_terrain
-
     border_width: float = 0.0
     """The width of the border around the terrain (in m). Defaults to 0.0.
-
     The border is a flat terrain with the same height as the terrain.
     """
     step_height_range: tuple[float, float] = MISSING
@@ -43,12 +40,19 @@ class MeshPyramidStairsTerrainCfg(SubTerrainBaseCfg):
     """The width of the square platform at the center of the terrain. Defaults to 1.0."""
     holes: bool = False
     """If True, the terrain will have holes in the steps. Defaults to False.
-
     If :obj:`holes` is True, the terrain will have pyramid stairs of length or width
     :obj:`platform_width` (depending on the direction) with no steps in the remaining area. Additionally,
     no border will be added.
     """
-
+@configclass
+class MeshPyramidOpenStairsTerrainCfg(SubTerrainBaseCfg):
+    function = mesh_terrains.open_pyramid_stairs_terrain
+    border_width: float = 0.0
+    step_height_range: tuple[float, float] = MISSING # in meters
+    step_width: float = MISSING # in meters
+    platform_width: float = 1.0 # defaults to 1
+    holes: bool = False
+    gap_height_range: tuple[float, float] = MISSING # in meters
 
 @configclass
 class MeshInvertedPyramidStairsTerrainCfg(MeshPyramidStairsTerrainCfg):
