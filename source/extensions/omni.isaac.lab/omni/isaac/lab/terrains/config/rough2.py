@@ -9,6 +9,11 @@ import omni.isaac.lab.terrains as terrain_gen
 
 from ..terrain_generator_cfg import TerrainGeneratorCfg
 
+"""
+Edited to include the optimal training environments for the power plant conditions.
+- Gabriel Rodriguez
+"""
+
 ROUGH_TERRAINS_CFG2 = TerrainGeneratorCfg(
     size=(8.0, 8.0),
     border_width=20.0,
@@ -30,35 +35,35 @@ ROUGH_TERRAINS_CFG2 = TerrainGeneratorCfg(
         ),
         "pyramid_open_stairs": terrain_gen.MeshPyramidOpenStairsTerrainCfg(
             proportion=0.25,
-            step_height_range=(0.02, 0.04),
-            gap_height_range=(0.10, 0.20),
-            step_width=0.3,
-            platform_width=3.0,
+            step_height=0.05,
+            gap_height_range=(0.08, 0.24),
+            step_width_range=(0.24, 0.50),
+            platform_width=2.0,
             border_width=0.1,
             holes=False,
         ),
         "pyramid_open_stairs_inv": terrain_gen.MeshInvertedPyramidOpenStairsTerrainCfg(
             proportion=0.25,
-            step_height_range=(0.02, 0.04),
-            gap_height_range=(0.10, 0.20),
-            step_width=0.3,
-            platform_width=3.0,
+            step_height=0.05,
+            gap_height_range=(0.08, 0.24),
+            step_width_range=(0.24, 0.50),
+            platform_width=2.0,
             border_width=0.1,
             holes=False,
         ),
         "pyramid_stairs": terrain_gen.MeshPyramidStairsTerrainCfg(
             proportion=0.2,
-            step_height_range=(0.05, 0.23),
-            step_width=0.3,
-            platform_width=3.0,
+            step_height_range=(0.13, 0.29),
+            step_width_range=(0.24, 0.50),
+            platform_width=2.0,
             border_width=0.1,
             holes=False,
         ),
         "pyramid_stairs_inv": terrain_gen.MeshInvertedPyramidStairsTerrainCfg(
             proportion=0.2,
-            step_height_range=(0.05, 0.23),
-            step_width=0.3,
-            platform_width=4.0,
+            step_height_range=(0.13, 0.29),
+            step_width_range=(0.24, 0.50),
+            platform_width=2.0,
             border_width=0.1,
             holes=False,
         ),

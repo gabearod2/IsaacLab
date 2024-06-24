@@ -25,7 +25,7 @@ class UnitreeGo2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         # reduce action scale
         self.actions.joint_pos.scale = 0.25
 
-        # event
+        # events - adding push robot event to simulate collision
         self.events.push_robot.params["velocity_range"] = {"x": (-0.75, 0.75), "y": (-0.75, 0.75)}
         self.events.add_base_mass.params["mass_distribution_params"] = (-1.0, 3.0)
         self.events.add_base_mass.params["asset_cfg"].body_names = "base"

@@ -52,7 +52,7 @@ def pyramid_stairs_terrain(
     difficulty: float, cfg: mesh_terrains_cfg.MeshPyramidStairsTerrainCfg
 ) -> tuple[list[trimesh.Trimesh], np.ndarray]:
     """Generate a terrain with a pyramid stair pattern.
-
+    - Gabriel Rodriguez - edited to create width range with OSHA standards
     The terrain is a pyramid stair pattern which trims to a flat platform at the center of the terrain.
 
     If :obj:`cfg.holes` is True, the terrain will have pyramid stairs of length or width
@@ -74,10 +74,11 @@ def pyramid_stairs_terrain(
     """
     # resolve the terrain configuration
     step_height = cfg.step_height_range[0] + difficulty * (cfg.step_height_range[1] - cfg.step_height_range[0])
+    step_width = cfg.step_width_range[1] - difficulty * (cfg.step_width_range[1] - cfg.step_width_range[0])
 
     # compute number of steps in x and y direction
-    num_steps_x = (cfg.size[0] - 2 * cfg.border_width - cfg.platform_width) // (2 * cfg.step_width) + 1
-    num_steps_y = (cfg.size[1] - 2 * cfg.border_width - cfg.platform_width) // (2 * cfg.step_width) + 1
+    num_steps_x = (cfg.size[0] - 2 * cfg.border_width - cfg.platform_width) // (2 * step_width) + 1
+    num_steps_y = (cfg.size[1] - 2 * cfg.border_width - cfg.platform_width) // (2 * step_width) + 1
     # we take the minimum number of steps in x and y direction
     num_steps = int(min(num_steps_x, num_steps_y))
 
@@ -103,16 +104,16 @@ def pyramid_stairs_terrain(
         if cfg.holes:
             box_size = (cfg.platform_width, cfg.platform_width)
         else:
-            box_size = (terrain_size[0] - 2 * k * cfg.step_width, terrain_size[1] - 2 * k * cfg.step_width)
+            box_size = (terrain_size[0] - 2 * k * step_width, terrain_size[1] - 2 * k * step_width)
         # compute the quantities of the box
         # -- location
         box_z = terrain_center[2] + k * step_height / 2.0
-        box_offset = (k + 0.5) * cfg.step_width
+        box_offset = (k + 0.5) * step_width
         # -- dimensions
         box_height = (k + 2) * step_height
         # generate the boxes
         # top/bottom
-        box_dims = (box_size[0], cfg.step_width, box_height)
+        box_dims = (box_size[0], step_width, box_height)
         # -- top
         box_pos = (terrain_center[0], terrain_center[1] + terrain_size[1] / 2.0 - box_offset, box_z)
         box_top = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
@@ -121,9 +122,9 @@ def pyramid_stairs_terrain(
         box_bottom = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
         # right/left
         if cfg.holes:
-            box_dims = (cfg.step_width, box_size[1], box_height)
+            box_dims = (step_width, box_size[1], box_height)
         else:
-            box_dims = (cfg.step_width, box_size[1] - 2 * cfg.step_width, box_height)
+            box_dims = (step_width, box_size[1] - 2 * step_width, box_height)
         # -- right
         box_pos = (terrain_center[0] + terrain_size[0] / 2.0 - box_offset, terrain_center[1], box_z)
         box_right = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
@@ -135,8 +136,8 @@ def pyramid_stairs_terrain(
 
     # generate final box for the middle of the terrain
     box_dims = (
-        terrain_size[0] - 2 * num_steps * cfg.step_width,
-        terrain_size[1] - 2 * num_steps * cfg.step_width,
+        terrain_size[0] - 2 * num_steps * step_width,
+        terrain_size[1] - 2 * num_steps * step_width,
         (num_steps + 2) * step_height,
     )
     box_pos = (terrain_center[0], terrain_center[1], terrain_center[2] + num_steps * step_height / 2)
@@ -151,7 +152,7 @@ def open_pyramid_stairs_terrain(
     difficulty: float, cfg: mesh_terrains_cfg.MeshPyramidOpenStairsTerrainCfg
 ) -> tuple[list[trimesh.Trimesh], np.ndarray]:
     """Generate a terrain with a pyramid open stair pattern.
-
+    - Gabriel Rodriguez - created based off pyramid stairs for stairs with gap and OSHA width range
     Args:
         difficulty: The difficulty of the terrain. This is a value between 0 and 1.
         cfg: The configuration for the terrain.
@@ -159,13 +160,13 @@ def open_pyramid_stairs_terrain(
     Returns:
         A tuple containing the tri-mesh of the terrain and the origin of the terrain (in m).
     """
-    # resolve the terrain configuration
-    step_height = cfg.step_height_range[0] + difficulty * (cfg.step_height_range[1] - cfg.step_height_range[0])
-    step_gap = np.random.uniform(cfg.gap_height_range[0], cfg.gap_height_range[1])
+    # resolve the terrain configuration - higher difficulty, higher gap
+    step_gap = cfg.gap_height_range[0] + difficulty * (cfg.gap_height_range[1] - cfg.gap_height_range[0])
+    step_width = cfg.step_width_range[1] - difficulty * (cfg.step_width_range[1] - cfg.step_width_range[0])
 
     # compute number of steps in x and y direction
-    num_steps_x = (cfg.size[0] - 2 * cfg.border_width - cfg.platform_width) // (2 * cfg.step_width) + 1
-    num_steps_y = (cfg.size[1] - 2 * cfg.border_width - cfg.platform_width) // (2 * cfg.step_width) + 1
+    num_steps_x = (cfg.size[0] - 2 * cfg.border_width - cfg.platform_width) // (2 * step_width) + 1
+    num_steps_y = (cfg.size[1] - 2 * cfg.border_width - cfg.platform_width) // (2 * step_width) + 1
     # we take the minimum number of steps in x and y direction
     num_steps = int(min(num_steps_x, num_steps_y))
 
@@ -175,9 +176,9 @@ def open_pyramid_stairs_terrain(
     # generate the border if needed
     if cfg.border_width > 0.0 and not cfg.holes:
         # obtain a list of meshes for the border
-        border_center = [0.5 * cfg.size[0], 0.5 * cfg.size[1], -step_height / 2]
+        border_center = [0.5 * cfg.size[0], 0.5 * cfg.size[1], -cfg.step_height / 2]
         border_inner_size = (cfg.size[0] - 2 * cfg.border_width, cfg.size[1] - 2 * cfg.border_width)
-        make_borders = make_border(cfg.size, border_inner_size, step_height, border_center)
+        make_borders = make_border(cfg.size, border_inner_size, cfg.step_height, border_center)
         # add the border meshes to the list of meshes
         meshes_list += make_borders
 
@@ -187,14 +188,14 @@ def open_pyramid_stairs_terrain(
     terrain_size = (cfg.size[0] - 2 * cfg.border_width, cfg.size[1] - 2 * cfg.border_width)
     # -- generate the stair pattern
     for k in range(num_steps):
-        box_size = (terrain_size[0] - 2 * k * cfg.step_width, terrain_size[1] - 2 * k * cfg.step_width)
+        box_size = (terrain_size[0] - 2 * k * step_width, terrain_size[1] - 2 * k * step_width)
         # compute the quantities of the box
-        box_z = terrain_center[2] + k * (step_height + step_gap)
-        box_offset = (k + 0.5) * cfg.step_width
-        box_height = step_height
+        box_z = terrain_center[2] + k * (cfg.step_height + step_gap)
+        box_offset = (k + 0.5) * step_width
+        box_height = cfg.step_height
         # generate the boxes
         # top/bottom
-        box_dims = (box_size[0], cfg.step_width, box_height)
+        box_dims = (box_size[0], step_width, box_height)
         # -- top
         box_pos = (terrain_center[0], terrain_center[1] + terrain_size[1] / 2.0 - box_offset, box_z)
         box_top = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
@@ -202,7 +203,7 @@ def open_pyramid_stairs_terrain(
         box_pos = (terrain_center[0], terrain_center[1] - terrain_size[1] / 2.0 + box_offset, box_z)
         box_bottom = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
         # right/left
-        box_dims = (cfg.step_width, box_size[1] - 2 * cfg.step_width, box_height)
+        box_dims = (step_width, box_size[1] - 2 * step_width, box_height)
         # -- right
         box_pos = (terrain_center[0] + terrain_size[0] / 2.0 - box_offset, terrain_center[1], box_z)
         box_right = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
@@ -214,15 +215,15 @@ def open_pyramid_stairs_terrain(
 
     # generate final box for the middle of the terrain
     box_dims = (
-        terrain_size[0] - 2 * num_steps * cfg.step_width,
-        terrain_size[1] - 2 * num_steps * cfg.step_width,
-        step_height,
+        terrain_size[0] - 2 * num_steps * step_width,
+        terrain_size[1] - 2 * num_steps * step_width,
+        cfg.step_height,
     )
-    box_pos = (terrain_center[0], terrain_center[1], terrain_center[2] + num_steps * (step_height + step_gap))
+    box_pos = (terrain_center[0], terrain_center[1], terrain_center[2] + num_steps * (cfg.step_height + step_gap))
     box_middle = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
     meshes_list.append(box_middle)
     # origin of the terrain
-    origin = np.array([terrain_center[0], terrain_center[1], (num_steps + 1) * (step_height + step_gap)])
+    origin = np.array([terrain_center[0], terrain_center[1], (num_steps + 1) * (cfg.step_height + step_gap)])
 
     return meshes_list, origin
 
@@ -231,8 +232,8 @@ def open_pyramid_stairs_terrain(
 def inverted_pyramid_stairs_terrain(
     difficulty: float, cfg: mesh_terrains_cfg.MeshInvertedPyramidStairsTerrainCfg
 ) -> tuple[list[trimesh.Trimesh], np.ndarray]:
-    """Generate a terrain with a inverted pyramid stair pattern.
-
+    """Generate a terrain with an inverted pyramid stair pattern.
+    - Gabriel Rodriguez - edited to include OSHA stair width range
     The terrain is an inverted pyramid stair pattern which trims to a flat platform at the center of the terrain.
 
     If :obj:`cfg.holes` is True, the terrain will have pyramid stairs of length or width
@@ -254,10 +255,11 @@ def inverted_pyramid_stairs_terrain(
     """
     # resolve the terrain configuration
     step_height = cfg.step_height_range[0] + difficulty * (cfg.step_height_range[1] - cfg.step_height_range[0])
+    step_width = cfg.step_width_range[1] - difficulty * (cfg.step_width_range[1] - cfg.step_width_range[0])
 
     # compute number of steps in x and y direction
-    num_steps_x = (cfg.size[0] - 2 * cfg.border_width - cfg.platform_width) // (2 * cfg.step_width) + 1
-    num_steps_y = (cfg.size[1] - 2 * cfg.border_width - cfg.platform_width) // (2 * cfg.step_width) + 1
+    num_steps_x = (cfg.size[0] - 2 * cfg.border_width - cfg.platform_width) // (2 * step_width) + 1
+    num_steps_y = (cfg.size[1] - 2 * cfg.border_width - cfg.platform_width) // (2 * step_width) + 1
     # we take the minimum number of steps in x and y direction
     num_steps = int(min(num_steps_x, num_steps_y))
     # total height of the terrain
@@ -284,16 +286,16 @@ def inverted_pyramid_stairs_terrain(
         if cfg.holes:
             box_size = (cfg.platform_width, cfg.platform_width)
         else:
-            box_size = (terrain_size[0] - 2 * k * cfg.step_width, terrain_size[1] - 2 * k * cfg.step_width)
+            box_size = (terrain_size[0] - 2 * k * step_width, terrain_size[1] - 2 * k * step_width)
         # compute the quantities of the box
         # -- location
         box_z = terrain_center[2] - total_height / 2 - (k + 1) * step_height / 2.0
-        box_offset = (k + 0.5) * cfg.step_width
+        box_offset = (k + 0.5) * step_width
         # -- dimensions
         box_height = total_height - (k + 1) * step_height
         # generate the boxes
         # top/bottom
-        box_dims = (box_size[0], cfg.step_width, box_height)
+        box_dims = (box_size[0], step_width, box_height)
         # -- top
         box_pos = (terrain_center[0], terrain_center[1] + terrain_size[1] / 2.0 - box_offset, box_z)
         box_top = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
@@ -302,9 +304,9 @@ def inverted_pyramid_stairs_terrain(
         box_bottom = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
         # right/left
         if cfg.holes:
-            box_dims = (cfg.step_width, box_size[1], box_height)
+            box_dims = (step_width, box_size[1], box_height)
         else:
-            box_dims = (cfg.step_width, box_size[1] - 2 * cfg.step_width, box_height)
+            box_dims = (step_width, box_size[1] - 2 * step_width, box_height)
         # -- right
         box_pos = (terrain_center[0] + terrain_size[0] / 2.0 - box_offset, terrain_center[1], box_z)
         box_right = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
@@ -315,8 +317,8 @@ def inverted_pyramid_stairs_terrain(
         meshes_list += [box_top, box_bottom, box_right, box_left]
     # generate final box for the middle of the terrain
     box_dims = (
-        terrain_size[0] - 2 * num_steps * cfg.step_width,
-        terrain_size[1] - 2 * num_steps * cfg.step_width,
+        terrain_size[0] - 2 * num_steps * step_width,
+        terrain_size[1] - 2 * num_steps * step_width,
         step_height,
     )
     box_pos = (terrain_center[0], terrain_center[1], terrain_center[2] - total_height - step_height / 2)
@@ -331,7 +333,7 @@ def inverted_open_pyramid_stairs_terrain(
     difficulty: float, cfg: mesh_terrains_cfg.MeshPyramidOpenStairsTerrainCfg
 ) -> tuple[list[trimesh.Trimesh], np.ndarray]:
     """Generate a terrain with an inverted pyramid open stair pattern.
-
+    - Gabriel Rodriguez - created based off pyramid stairs for OSHA stair with gaps and width (depth) range
     Args:
         difficulty: The difficulty of the terrain. This is a value between 0 and 1.
         cfg: The configuration for the terrain.
@@ -339,12 +341,13 @@ def inverted_open_pyramid_stairs_terrain(
     Returns:
         A tuple containing the tri-mesh of the terrain and the origin of the terrain (in m).
     """
-    # resolve the terrain configuration
-    step_height = cfg.step_height_range[0] + difficulty * (cfg.step_height_range[1] - cfg.step_height_range[0])
-    step_gap = np.random.uniform(cfg.gap_height_range[0], cfg.gap_height_range[1])
+    # resolve the terrain configuration - higher difficulty, higher gap
+    step_gap = cfg.gap_height_range[0] + difficulty * (cfg.gap_height_range[1] - cfg.gap_height_range[0])
+    step_width = cfg.step_width_range[1] - difficulty * (cfg.step_width_range[1] - cfg.step_width_range[0])
+
     # compute number of steps in x and y direction
-    num_steps_x = (cfg.size[0] - 2 * cfg.border_width - cfg.platform_width) // (2 * cfg.step_width) + 1
-    num_steps_y = (cfg.size[1] - 2 * cfg.border_width - cfg.platform_width) // (2 * cfg.step_width) + 1
+    num_steps_x = (cfg.size[0] - 2 * cfg.border_width - cfg.platform_width) // (2 * step_width) + 1
+    num_steps_y = (cfg.size[1] - 2 * cfg.border_width - cfg.platform_width) // (2 * step_width) + 1
     # we take the minimum number of steps in x and y direction
     num_steps = int(min(num_steps_x, num_steps_y))
 
@@ -354,9 +357,9 @@ def inverted_open_pyramid_stairs_terrain(
     # generate the border if needed
     if cfg.border_width > 0.0 and not cfg.holes:
         # obtain a list of meshes for the border
-        border_center = [0.5 * cfg.size[0], 0.5 * cfg.size[1], -step_height / 2]
+        border_center = [0.5 * cfg.size[0], 0.5 * cfg.size[1], -cfg.step_height / 2]
         border_inner_size = (cfg.size[0] - 2 * cfg.border_width, cfg.size[1] - 2 * cfg.border_width)
-        make_borders = make_border(cfg.size, border_inner_size, step_height, border_center)
+        make_borders = make_border(cfg.size, border_inner_size, cfg.step_height, border_center)
         # add the border meshes to the list of meshes
         meshes_list += make_borders
 
@@ -366,14 +369,14 @@ def inverted_open_pyramid_stairs_terrain(
     terrain_size = (cfg.size[0] - 2 * cfg.border_width, cfg.size[1] - 2 * cfg.border_width)
     # -- generate the stair pattern
     for k in range(num_steps):
-        box_size = (terrain_size[0] - 2 * k * cfg.step_width, terrain_size[1] - 2 * k * cfg.step_width)
+        box_size = (terrain_size[0] - 2 * k * step_width, terrain_size[1] - 2 * k * step_width)
         # compute the quantities of the box
-        box_z = terrain_center[2] - k * (step_height + step_gap)
-        box_offset = (k + 0.5) * cfg.step_width
-        box_height = step_height
+        box_z = terrain_center[2] - k * (cfg.step_height + step_gap)
+        box_offset = (k + 0.5) * step_width
+        box_height = cfg.step_height
         # generate the boxes
         # top/bottom
-        box_dims = (box_size[0], cfg.step_width, box_height)
+        box_dims = (box_size[0], step_width, box_height)
         # -- top
         box_pos = (terrain_center[0], terrain_center[1] + terrain_size[1] / 2.0 - box_offset, box_z)
         box_top = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
@@ -381,7 +384,7 @@ def inverted_open_pyramid_stairs_terrain(
         box_pos = (terrain_center[0], terrain_center[1] - terrain_size[1] / 2.0 + box_offset, box_z)
         box_bottom = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
         # right/left
-        box_dims = (cfg.step_width, box_size[1] - 2 * cfg.step_width, box_height)
+        box_dims = (step_width, box_size[1] - 2 * step_width, box_height)
         # -- right
         box_pos = (terrain_center[0] + terrain_size[0] / 2.0 - box_offset, terrain_center[1], box_z)
         box_right = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
@@ -393,15 +396,15 @@ def inverted_open_pyramid_stairs_terrain(
 
     # generate final box for the middle of the terrain
     box_dims = (
-        terrain_size[0] - 2 * num_steps * cfg.step_width,
-        terrain_size[1] - 2 * num_steps * cfg.step_width,
-        step_height,
+        terrain_size[0] - 2 * num_steps * step_width,
+        terrain_size[1] - 2 * num_steps * step_width,
+        cfg.step_height,
     )
-    box_pos = (terrain_center[0], terrain_center[1], terrain_center[2] - num_steps * (step_height + step_gap))
+    box_pos = (terrain_center[0], terrain_center[1], terrain_center[2] - num_steps * (cfg.step_height + step_gap))
     box_middle = trimesh.creation.box(box_dims, trimesh.transformations.translation_matrix(box_pos))
     meshes_list.append(box_middle)
     # origin of the terrain
-    origin = np.array([terrain_center[0], terrain_center[1], -num_steps * (step_height + step_gap)])
+    origin = np.array([terrain_center[0], terrain_center[1], -num_steps * (cfg.step_height + step_gap)])
 
     return meshes_list, origin
 

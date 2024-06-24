@@ -29,20 +29,23 @@ class MeshPyramidStairsTerrainCfg(SubTerrainBaseCfg):
     function = mesh_terrains.pyramid_stairs_terrain
     border_width: float = 0.0
     step_height_range: tuple[float, float] = MISSING
-    step_width: float = MISSING
+    step_width_range: tuple[float, float] = MISSING
     platform_width: float = 1.0
     holes: bool = False
 
 @configclass
 class MeshPyramidOpenStairsTerrainCfg(SubTerrainBaseCfg):
-    """Configuration for a pyramid open stair mesh terrain."""
+    """
+    Configuration for a pyramid open stair mesh terrain.
+    - Gabriel Rodriguez
+    """
     function = mesh_terrains.open_pyramid_stairs_terrain
     border_width: float = 0.0
-    step_height_range: tuple[float, float] = MISSING # in meters
-    step_width: float = MISSING # in meters
+    step_height: float = MISSING # in meters - the actual nosing thickness
+    step_width_range: tuple[float, float] = MISSING # in meters
     platform_width: float = 1.0 # defaults to 1
     holes: bool = False
-    gap_height_range: tuple[float, float] = MISSING # in meters
+    gap_height_range: tuple[float, float] = MISSING # in meters - adds to step height for total riser height
 
 @configclass
 class MeshInvertedPyramidStairsTerrainCfg(MeshPyramidStairsTerrainCfg):
@@ -51,9 +54,11 @@ class MeshInvertedPyramidStairsTerrainCfg(MeshPyramidStairsTerrainCfg):
 
 @configclass
 class MeshInvertedPyramidOpenStairsTerrainCfg(MeshPyramidOpenStairsTerrainCfg):
-    """Configuration for a pyramid inverted open stair mesh terrain."""
+    """
+    Configuration for a pyramid inverted open stair mesh terrain.
+    - Gabriel Rodriguez
+    """
     function = mesh_terrains.inverted_open_pyramid_stairs_terrain
-
 
 
 @configclass
