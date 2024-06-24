@@ -20,6 +20,7 @@ Different trimesh terrain configurations.
 @configclass
 class MeshPlaneTerrainCfg(SubTerrainBaseCfg):
     """Configuration for a plane mesh terrain."""
+
     function = mesh_terrains.flat_terrain
 
 
@@ -28,14 +29,23 @@ class MeshPyramidStairsTerrainCfg(SubTerrainBaseCfg):
     """Configuration for a pyramid stair mesh terrain."""
     function = mesh_terrains.pyramid_stairs_terrain
     border_width: float = 0.0
+    """The width of the border around the terrain (in m). Defaults to 0.0.
+    The border is a flat terrain with the same height as the terrain.
+    """
     step_height_range: tuple[float, float] = MISSING
+    """The minimum and maximum height of the steps (in m)."""
     step_width: float = MISSING
+    """The width of the steps (in m)."""
     platform_width: float = 1.0
+    """The width of the square platform at the center of the terrain. Defaults to 1.0."""
     holes: bool = False
-
+    """If True, the terrain will have holes in the steps. Defaults to False.
+    If :obj:`holes` is True, the terrain will have pyramid stairs of length or width
+    :obj:`platform_width` (depending on the direction) with no steps in the remaining area. Additionally,
+    no border will be added.
+    """
 @configclass
 class MeshPyramidOpenStairsTerrainCfg(SubTerrainBaseCfg):
-    """Configuration for a pyramid open stair mesh terrain."""
     function = mesh_terrains.open_pyramid_stairs_terrain
     border_width: float = 0.0
     step_height_range: tuple[float, float] = MISSING # in meters
@@ -46,20 +56,21 @@ class MeshPyramidOpenStairsTerrainCfg(SubTerrainBaseCfg):
 
 @configclass
 class MeshInvertedPyramidStairsTerrainCfg(MeshPyramidStairsTerrainCfg):
-    """Configuration for a pyramid inverted stair mesh terrain."""
+    """Configuration for an inverted pyramid stair mesh terrain.
+
+    Note:
+        This is the same as :class:`MeshPyramidStairsTerrainCfg` except that the steps are inverted.
+    """
+
     function = mesh_terrains.inverted_pyramid_stairs_terrain
-
-@configclass
-class MeshInvertedPyramidOpenStairsTerrainCfg(MeshPyramidOpenStairsTerrainCfg):
-    """Configuration for a pyramid inverted open stair mesh terrain."""
-    function = mesh_terrains.inverted_open_pyramid_stairs_terrain
-
 
 
 @configclass
 class MeshRandomGridTerrainCfg(SubTerrainBaseCfg):
     """Configuration for a random grid mesh terrain."""
+
     function = mesh_terrains.random_grid_terrain
+
     grid_width: float = MISSING
     """The width of the grid cells (in m)."""
     grid_height_range: tuple[float, float] = MISSING
