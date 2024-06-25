@@ -17,7 +17,7 @@ Edited to include the optimal training environments for the power plant conditio
 ROUGH_TERRAINS_CFG2 = TerrainGeneratorCfg(
     size=(8.0, 8.0),
     border_width=20.0,
-    num_rows=20,
+    num_rows=10,
     num_cols=20,
     horizontal_scale=0.1,
     vertical_scale=0.005,
