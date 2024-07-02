@@ -25,7 +25,7 @@ ROUGH_TERRAINS_CFG2 = TerrainGeneratorCfg(
     use_cache=False,
     sub_terrains={
         "flat_terrain": terrain_gen.MeshPlaneTerrainCfg(
-            proportion=0.2,
+            proportion=0.25,
         ),
         "rails_terrain": terrain_gen.MeshRailsTerrainCfg(
             proportion=0.1,

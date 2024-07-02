@@ -75,11 +75,13 @@ class RayCaster(SensorBase):
             )
         # Initialize base class
         super().__init__(cfg)
+        # print information about the instance
         # Create empty variables for storing output data
         self._data = RayCasterData()
 
     def __str__(self) -> str:
         """Returns: A string containing information about the instance."""
+
         return (
             f"Ray-caster @ '{self.cfg.prim_path}': \n"
             f"\tview type            : {self._view.__class__}\n"

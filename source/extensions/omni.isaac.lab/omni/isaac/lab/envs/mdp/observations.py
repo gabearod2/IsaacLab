@@ -115,6 +115,7 @@ def joint_pos_rel(env: ManagerBasedEnv, asset_cfg: SceneEntityCfg = SceneEntityC
     """
     # extract the used quantities (to enable type-hinting)
     asset: Articulation = env.scene[asset_cfg.name]
+    #print(asset.data.default_joint_pos)
     return asset.data.joint_pos[:, asset_cfg.joint_ids] - asset.data.default_joint_pos[:, asset_cfg.joint_ids]
 
 
@@ -127,6 +128,7 @@ def joint_pos_limit_normalized(
     """
     # extract the used quantities (to enable type-hinting)
     asset: Articulation = env.scene[asset_cfg.name]
+    print('The values are being normalized!')
     return math_utils.scale_transform(
         asset.data.joint_pos[:, asset_cfg.joint_ids],
         asset.data.soft_joint_pos_limits[:, asset_cfg.joint_ids, 0],
@@ -166,6 +168,13 @@ def height_scan(env: ManagerBasedEnv, sensor_cfg: SceneEntityCfg, offset: float 
     """
     # extract the used quantities (to enable type-hinting)
     sensor: RayCaster = env.scene.sensors[sensor_cfg.name]
+    #print(sensor.__str__())
+    #print("In order to understand this observation:")
+    #print(sensor.data.pos_w[:, 2].unsqueeze(1))
+    #print(sensor.data.ray_hits_w[..., 2])
+    #print(sensor.data.pos_w[:, 2].unsqueeze(1) - sensor.data.ray_hits_w[..., 2] - offset)
+    #obs_height_scan = sensor.data.pos_w[:, 2].unsqueeze(1) - sensor.data.ray_hits_w[..., 2] - offset
+    #print("Output Shape: ", obs_height_scan.shape)
     # height scan: height = sensor_height - hit_point_z - offset
     return sensor.data.pos_w[:, 2].unsqueeze(1) - sensor.data.ray_hits_w[..., 2] - offset
 
