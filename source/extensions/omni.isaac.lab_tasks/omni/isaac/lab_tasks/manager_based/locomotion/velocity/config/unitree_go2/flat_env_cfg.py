@@ -24,6 +24,8 @@ class UnitreeGo2FlatEnvCfg(UnitreeGo2RoughEnvCfg):
         # no height scan
         self.scene.height_scanner = None
         self.observations.policy.height_scan = None
+        # EDIT: Gabriel Rodriguez - no linear body velocities
+        self.observations.policy.base_lin_vel = None
         # no terrain curriculum
         self.curriculum.terrain_levels = None
 

@@ -64,11 +64,14 @@ class MySceneCfg(InteractiveSceneCfg):
     robot: ArticulationCfg = MISSING
     # sensors - need to edit the ray caster to represent the one on the dog.
     height_scanner = RayCasterCfg(
-        prim_path="{ENV_REGEX_NS}/Robot/base",
-        offset=RayCasterCfg.OffsetCfg(pos=(0.0, 0.0, 0.0)),
+        prim_path="{ENV_REGEX_NS}/Robot/base/radar_joint",
+        offset=RayCasterCfg.OffsetCfg(pos=(0.0, 0.0, 0.0), rot=(1.0, 0.0, 0.0, 0.0)),
+        #offset=RayCasterCfg.OffsetCfg(pos=(0.28945, 0.0, -0.0468250), rot=(0.131316, 0, 0.9913406, 0)),
         attach_yaw_only=True,
         pattern_cfg=patterns.GridPatternCfg(resolution=0.1, size=[1.6, 1.0]),
+        #pattern_cfg=patterns.GridPatternCfg(resolution=0.06, size=[128*0.06, 128*0.06]),
         debug_vis=True,
+        drift_range=(0.0, 0.1),
         mesh_prim_paths=["/World/ground"],
     )
     contact_forces = ContactSensorCfg(prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=3, track_air_time=True)
