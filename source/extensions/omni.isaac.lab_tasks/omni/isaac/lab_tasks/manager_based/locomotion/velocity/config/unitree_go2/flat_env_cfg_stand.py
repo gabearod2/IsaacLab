@@ -5,7 +5,7 @@
 
 from omni.isaac.lab.utils import configclass
 
-from .rough_env_cfg2 import UnitreeGo2RoughEnvCfg
+from .rough_env_cfg_stand import UnitreeGo2RoughEnvCfg
 
 
 @configclass

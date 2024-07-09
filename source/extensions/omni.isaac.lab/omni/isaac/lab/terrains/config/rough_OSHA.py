@@ -14,7 +14,7 @@ Edited to include the optimal training environments for the power plant conditio
 - Gabriel Rodriguez
 """
 
-ROUGH_TERRAINS_CFG2 = TerrainGeneratorCfg(
+ROUGH_TERRAINS_CFG_OSHA = TerrainGeneratorCfg(
     size=(8.0, 8.0),
     border_width=20.0,
     num_rows=10,

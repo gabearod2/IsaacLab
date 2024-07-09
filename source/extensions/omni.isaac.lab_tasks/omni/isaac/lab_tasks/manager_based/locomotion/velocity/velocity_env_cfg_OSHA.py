@@ -28,7 +28,7 @@ import omni.isaac.lab_tasks.manager_based.locomotion.velocity.mdp as mdp
 ##
 # Pre-defined configs
 ##
-from omni.isaac.lab.terrains.config.rough2 import ROUGH_TERRAINS_CFG2  # isort: skip
+from omni.isaac.lab.terrains.config.rough_OSHA import ROUGH_TERRAINS_CFG_OSHA  # isort: skip
 
 
 ##
@@ -44,7 +44,7 @@ class MySceneCfg(InteractiveSceneCfg):
     terrain = TerrainImporterCfg(
         prim_path="/World/ground",
         terrain_type="generator",
-        terrain_generator=ROUGH_TERRAINS_CFG2,
+        terrain_generator=ROUGH_TERRAINS_CFG_OSHA,
         max_init_terrain_level=5,
         collision_group=-1,
         physics_material=sim_utils.RigidBodyMaterialCfg(
