@@ -98,7 +98,7 @@ def flat_orientation_l2(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = Scen
 
 
 def base_height_l2(
-    env: ManagerBasedRLEnv, command_name: str, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")
+    env: ManagerBasedRLEnv, target_height: float, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")
 ) -> torch.Tensor:
     """Penalize asset height from its target using L2-kernel.
 
@@ -107,7 +107,6 @@ def base_height_l2(
     """
     # extract the used quantities (to enable type-hinting)
     asset: RigidObject = env.scene[asset_cfg.name]
-    target_height = env.command_manager.get_command(command_name)[:, 2]
     #print(asset.data.root_pos_w[:, 2])
     #print(target_height)
     # TODO: Fix this for rough-terrain.

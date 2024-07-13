@@ -1,0 +1,288 @@
+--- git status ---
+On branch main2
+Your branch is up to date with 'origin/main2'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/actions/joint_actions.py
+	modified:   source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/observations.py
+	modified:   source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/rewards.py
+	modified:   source/extensions/omni.isaac.lab_assets/omni/isaac/lab_assets/unitree.py
+	modified:   source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/flat_env_cfg.py
+	modified:   source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/rough_env_cfg.py
+	modified:   source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/velocity_env_cfg.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	logs/rsl_rl/unitree_go2_flat/2024-07-13_15-01-57/
+	logs/rsl_rl/unitree_go2_flat/2024-07-13_15-03-15/
+	logs/rsl_rl/unitree_go2_flat/2024-07-13_15-04-49/
+
+no changes added to commit (use "git add" and/or "git commit -a") 
+
+
+--- git diff ---
+diff --git a/source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/actions/joint_actions.py b/source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/actions/joint_actions.py
+index 1627f30..e6d341e 100644
+--- a/source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/actions/joint_actions.py
++++ b/source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/actions/joint_actions.py
+@@ -118,10 +118,10 @@ class JointAction(ActionTerm):
+         self._raw_actions[:] = actions
+         # apply the affine transformations
+         self._processed_actions = self._raw_actions * self._scale + self._offset
+-        print('processed actions')
+-        print(self._processed_actions)
+-        print('raw actions')
+-        print(self._raw_actions)
++        #print('processed actions')
++        #print(self._processed_actions)
++        #print('raw actions')
++        #print(self._raw_actions)
+ 
+     def reset(self, env_ids: Sequence[int] | None = None) -> None:
+         self._raw_actions[env_ids] = 0.0
+diff --git a/source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/observations.py b/source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/observations.py
+index aab6efc..b344115 100644
+--- a/source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/observations.py
++++ b/source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/observations.py
+@@ -45,8 +45,8 @@ def base_ang_vel(env: ManagerBasedEnv, asset_cfg: SceneEntityCfg = SceneEntityCf
+     """Root angular velocity in the asset's root frame."""
+     # extract the used quantities (to enable type-hinting)
+     asset: RigidObject = env.scene[asset_cfg.name]
+-    print('angular velocity')
+-    print(asset.data.root_ang_vel_b)
++    #print('angular velocity')
++    #print(asset.data.root_ang_vel_b)
+     return asset.data.root_ang_vel_b
+ 
+ 
+@@ -54,8 +54,8 @@ def projected_gravity(env: ManagerBasedEnv, asset_cfg: SceneEntityCfg = SceneEnt
+     """Gravity projection on the asset's root frame."""
+     # extract the used quantities (to enable type-hinting)
+     asset: RigidObject = env.scene[asset_cfg.name]
+-    print('projected_gravity')
+-    print(asset.data.projected_gravity_b)
++    #print('projected_gravity')
++    #print(asset.data.projected_gravity_b)
+     return asset.data.projected_gravity_b
+ 
+ 
+@@ -109,8 +109,8 @@ def joint_pos(env: ManagerBasedEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg("
+     """
+     # extract the used quantities (to enable type-hinting)
+     asset: Articulation = env.scene[asset_cfg.name]
+-    print('joint positions')
+-    print(asset.data.joint_pos[:, asset_cfg.joint_ids])
++    #print('joint positions')
++    #print(asset.data.joint_pos[:, asset_cfg.joint_ids])
+     return asset.data.joint_pos[:, asset_cfg.joint_ids]
+ 
+ 
+@@ -121,8 +121,8 @@ def joint_pos_rel(env: ManagerBasedEnv, asset_cfg: SceneEntityCfg = SceneEntityC
+     """
+     # extract the used quantities (to enable type-hinting)
+     asset: Articulation = env.scene[asset_cfg.name]
+-    print('default joint pos')
+-    print(asset.data.default_joint_pos)
++    #print('default joint pos')
++    #print(asset.data.default_joint_pos)
+     return asset.data.joint_pos[:, asset_cfg.joint_ids] - asset.data.default_joint_pos[:, asset_cfg.joint_ids]
+ 
+ 
+@@ -135,7 +135,7 @@ def joint_pos_limit_normalized(
+     """
+     # extract the used quantities (to enable type-hinting)
+     asset: Articulation = env.scene[asset_cfg.name]
+-    print('The values are being normalized!')
++    #print('The values are being normalized!')
+     return math_utils.scale_transform(
+         asset.data.joint_pos[:, asset_cfg.joint_ids],
+         asset.data.soft_joint_pos_limits[:, asset_cfg.joint_ids, 0],
+@@ -211,12 +211,12 @@ def last_action(env: ManagerBasedEnv, action_name: str | None = None) -> torch.T
+     """
+ 
+     if action_name is None:
+-        print('observations action')
+-        print(env.action_manager.action)
++        #print('observations action')
++        #print(env.action_manager.action)
+         return env.action_manager.action
+     else:
+-        print('observation action')
+-        print(env.action_manager.get_term(action_name).raw_actions)
++        #print('observation action')
++        #print(env.action_manager.get_term(action_name).raw_actions)
+         return env.action_manager.get_term(action_name).raw_actions
+ 
+ 
+diff --git a/source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/rewards.py b/source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/rewards.py
+index 26a431a..fd79015 100644
+--- a/source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/rewards.py
++++ b/source/extensions/omni.isaac.lab/omni/isaac/lab/envs/mdp/rewards.py
+@@ -98,7 +98,7 @@ def flat_orientation_l2(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = Scen
+ 
+ 
+ def base_height_l2(
+-    env: ManagerBasedRLEnv, command_name: str, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")
++    env: ManagerBasedRLEnv, target_height: float, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")
+ ) -> torch.Tensor:
+     """Penalize asset height from its target using L2-kernel.
+ 
+@@ -107,7 +107,6 @@ def base_height_l2(
+     """
+     # extract the used quantities (to enable type-hinting)
+     asset: RigidObject = env.scene[asset_cfg.name]
+-    target_height = env.command_manager.get_command(command_name)[:, 2]
+     #print(asset.data.root_pos_w[:, 2])
+     #print(target_height)
+     # TODO: Fix this for rough-terrain.
+diff --git a/source/extensions/omni.isaac.lab_assets/omni/isaac/lab_assets/unitree.py b/source/extensions/omni.isaac.lab_assets/omni/isaac/lab_assets/unitree.py
+index 808b3f7..bf517d9 100644
+--- a/source/extensions/omni.isaac.lab_assets/omni/isaac/lab_assets/unitree.py
++++ b/source/extensions/omni.isaac.lab_assets/omni/isaac/lab_assets/unitree.py
+@@ -155,7 +155,7 @@ UNITREE_GO2_CFG = ArticulationCfg(
+         joint_pos={
+             ".*L_hip_joint": 0.1,
+             ".*R_hip_joint": -0.1,
+-            "F[L,R]_thigh_joint": 0.8,
++            "F[L,R]_thigh_joint": 1.0,
+             "R[L,R]_thigh_joint": 1.0,
+             ".*_calf_joint": -1.5,
+             #".*_hip_joint": -0.126,
+diff --git a/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/flat_env_cfg.py b/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/flat_env_cfg.py
+index 9eeae81..1f5af45 100644
+--- a/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/flat_env_cfg.py
++++ b/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/flat_env_cfg.py
+@@ -16,7 +16,7 @@ class UnitreeGo2FlatEnvCfg(UnitreeGo2RoughEnvCfg):
+ 
+         # override rewards
+         self.rewards.flat_orientation_l2.weight = -2.5
+-        self.rewards.feet_air_time.weight = 0.25
++        self.rewards.feet_air_time.weight = 0.35
+         # change terrain to flat
+         self.scene.terrain.terrain_type = "plane"
+         self.scene.terrain.terrain_generator = None
+@@ -41,4 +41,4 @@ class UnitreeGo2FlatEnvCfg_PLAY(UnitreeGo2FlatEnvCfg):
+         self.observations.policy.enable_corruption = False
+         # remove random pushing event
+         self.events.base_external_force_torque = None
+-        self.events.push_robot = None
++        # self.events.push_robot = None
+diff --git a/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/rough_env_cfg.py b/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/rough_env_cfg.py
+index 0e4ade0..830f888 100644
+--- a/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/rough_env_cfg.py
++++ b/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/rough_env_cfg.py
+@@ -31,7 +31,7 @@ class UnitreeGo2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
+         self.actions.joint_pos.scale = 0.25
+ 
+         # event
+-        self.events.push_robot = None
++        #self.events.push_robot = None
+         self.events.add_base_mass.params["mass_distribution_params"] = (-1.0, 3.0)
+         self.events.add_base_mass.params["asset_cfg"].body_names = "base"
+         self.events.base_external_force_torque.params["asset_cfg"].body_names = "base"
+@@ -50,15 +50,15 @@ class UnitreeGo2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
+ 
+         # rewards
+         self.rewards.feet_air_time.params["sensor_cfg"].body_names = ".*_foot"
+-        self.rewards.feet_air_time.weight = 0.01
+-        self.rewards.undesired_contacts = None
++        #self.rewards.feet_air_time.weight = 0.01
++        #self.rewards.undesired_contacts = None
+         self.rewards.dof_torques_l2.weight = -0.0002
+         self.rewards.track_lin_vel_xy_exp.weight = 1.5
+         self.rewards.track_ang_vel_z_exp.weight = 0.75
+-        self.rewards.dof_acc_l2.weight = -2.5e-7
++        #self.rewards.dof_acc_l2.weight = -2.5e-7
+ 
+         # terminations
+-        self.terminations.base_contact.params["sensor_cfg"].body_names = "base"
++        #self.terminations.base_contact.params["sensor_cfg"].body_names = "base"
+ 
+ 
+ @configclass
+diff --git a/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/velocity_env_cfg.py b/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/velocity_env_cfg.py
+index 278a568..b203009 100644
+--- a/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/velocity_env_cfg.py
++++ b/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/velocity_env_cfg.py
+@@ -97,10 +97,10 @@ class CommandsCfg:
+         rel_standing_envs=0.02,
+         rel_heading_envs=1.0,
+         heading_command=True,
+-        heading_control_stiffness=0.5,
++        heading_control_stiffness=0.6,
+         debug_vis=True,
+         ranges=mdp.UniformVelocityCommandCfg.Ranges(
+-            lin_vel_x=(0, 0), lin_vel_y=(0, 0), ang_vel_z=(-1.0, 1.0), heading=(-math.pi, math.pi)
++            lin_vel_x=(-2.0, 2.0), lin_vel_y=(-2.0, 2.0), ang_vel_z=(-1.0, 1.0), heading=(-math.pi, math.pi)
+         ),
+     )
+ 
+@@ -204,7 +204,7 @@ class EventCfg:
+         func=mdp.reset_joints_by_scale,
+         mode="reset",
+         params={
+-            "position_range": (0.5, 1.5),
++            "position_range": (0.9, 1.1),
+             "velocity_range": (0.0, 0.0),
+         },
+     )
+@@ -229,6 +229,7 @@ class RewardsCfg:
+     track_ang_vel_z_exp = RewTerm(
+         func=mdp.track_ang_vel_z_exp, weight=0.5, params={"command_name": "base_velocity", "std": math.sqrt(0.25)}
+     )
++    base_height_l2 = RewTerm(func=mdp.base_height_l2, params={'target_height': 0.25}, weight=0.25)
+     # -- penalties
+     lin_vel_z_l2 = RewTerm(func=mdp.lin_vel_z_l2, weight=-2.0)
+     ang_vel_xy_l2 = RewTerm(func=mdp.ang_vel_xy_l2, weight=-0.05)
+@@ -237,17 +238,17 @@ class RewardsCfg:
+     action_rate_l2 = RewTerm(func=mdp.action_rate_l2, weight=-0.01)
+     feet_air_time = RewTerm(
+         func=mdp.feet_air_time,
+-        weight=0.125,
++        weight=0.25,
+         params={
+-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*FOOT"),
++            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_foot"),
+             "command_name": "base_velocity",
+-            "threshold": 0.5,
++            "threshold": 0.65,
+         },
+     )
+     undesired_contacts = RewTerm(
+         func=mdp.undesired_contacts,
+         weight=-1.0,
+-        params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*THIGH"), "threshold": 1.0},
++        params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_thigh"), "threshold": 1.0},
+     )
+     # -- optional penalties
+     flat_orientation_l2 = RewTerm(func=mdp.flat_orientation_l2, weight=0.0)
+@@ -259,9 +260,13 @@ class TerminationsCfg:
+     """Termination terms for the MDP."""
+ 
+     time_out = DoneTerm(func=mdp.time_out, time_out=True)
+-    base_contact = DoneTerm(
+-        func=mdp.illegal_contact,
+-        params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names="base"), "threshold": 1.0},
++    #base_contact = DoneTerm(
++    #    func=mdp.illegal_contact,
++    #    params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names="base"), "threshold": 1.0},
++    #)
++    bad_orientation = DoneTerm(
++        func=mdp.bad_orientation,
++        params={'limit_angle': 1.3}
+     )
+ 
+ 
+@@ -296,10 +301,6 @@ class LocomotionVelocityRoughEnvCfg(ManagerBasedRLEnvCfg):
+     def __post_init__(self):
+         """Post initialization."""
+         # general settings
+-        print("Observations")
+-        print(self.observations)
+-        print("Actions")
+-        print(self.actions)
+         self.decimation = 4
+         self.episode_length_s = 20.0
+         # simulation settings

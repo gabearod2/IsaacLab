@@ -155,7 +155,7 @@ UNITREE_GO2_CFG = ArticulationCfg(
         joint_pos={
             ".*L_hip_joint": 0.1,
             ".*R_hip_joint": -0.1,
-            "F[L,R]_thigh_joint": 0.8,
+            "F[L,R]_thigh_joint": 1.0,
             "R[L,R]_thigh_joint": 1.0,
             ".*_calf_joint": -1.5,
             #".*_hip_joint": -0.126,
