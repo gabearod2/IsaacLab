@@ -1,0 +1,1171 @@
+--- git status ---
+On branch main2
+Your branch is up to date with 'origin/main2'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/events.out.tfevents.1719958032.gabriel-Legion-Pro-7-16IRX8H.16032.0
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/exported/policy.onnx
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/exported/policy.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/git/IsaacLab.diff
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_0.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_100.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1000.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1050.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1100.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1150.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1200.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1250.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1300.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1350.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1400.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1450.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_150.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1500.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1550.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1600.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1650.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1700.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1750.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1800.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1850.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1900.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1950.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1999.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_200.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_250.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_300.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_350.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_400.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_450.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_50.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_500.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_550.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_600.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_650.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_700.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_750.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_800.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_850.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_900.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_950.pt
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/agent.pkl
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/agent.yaml
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/env.pkl
+	deleted:    logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/env.yaml
+	modified:   logs/rsl_rl/unitree_go2_rough/2024-06-25_11-40-02/exported/policy.pt
+	modified:   source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/flat_env_cfg.py
+	modified:   source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/velocity_env_cfg2.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	logs/rsl_rl/unitree_go2_flat/2024-07-08_15-34-47/
+
+no changes added to commit (use "git add" and/or "git commit -a") 
+
+
+--- git diff ---
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/events.out.tfevents.1719958032.gabriel-Legion-Pro-7-16IRX8H.16032.0 b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/events.out.tfevents.1719958032.gabriel-Legion-Pro-7-16IRX8H.16032.0
+deleted file mode 100644
+index ce7311f..0000000
+Binary files a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/events.out.tfevents.1719958032.gabriel-Legion-Pro-7-16IRX8H.16032.0 and /dev/null differ
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/exported/policy.onnx b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/exported/policy.onnx
+deleted file mode 100644
+index c2adecd..0000000
+Binary files a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/exported/policy.onnx and /dev/null differ
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/exported/policy.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/exported/policy.pt
+deleted file mode 100644
+index 54da0ab..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/exported/policy.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:29d64f8fb34e33105759e4796d4a41aa0bc18ff0c6c93f57e7b361ee6b2a43d2
+-size 174566
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/git/IsaacLab.diff b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/git/IsaacLab.diff
+deleted file mode 100644
+index de3ce3a..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/git/IsaacLab.diff
++++ /dev/null
+@@ -1,12 +0,0 @@
+---- git status ---
+-On branch main2
+-Your branch is up to date with 'origin/main2'.
+-
+-Untracked files:
+-  (use "git add <file>..." to include in what will be committed)
+-	logs/rsl_rl/unitree_go2_flat/
+-
+-nothing added to commit but untracked files present (use "git add" to track) 
+-
+-
+---- git diff ---
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_0.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_0.pt
+deleted file mode 100644
+index d1d698c..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_0.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:42e236c031461d2836acc194021fd437b27d472d747c8cf2d6cab0ca34ba52a1
+-size 982986
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_100.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_100.pt
+deleted file mode 100644
+index 3811341..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_100.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:6334ce4a598dbb577b6638f818ae6662b0f8e733a1cffb49e9f36988a9605485
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1000.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1000.pt
+deleted file mode 100644
+index ccc4635..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1000.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:f1c60cd82db04f1140786f754e8c65e92a9b40bb8f276b0417c5d72654e3d6d0
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1050.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1050.pt
+deleted file mode 100644
+index 5110be3..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1050.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:ed3d1d94b805bcd6646f712f3824e01e2d956715f41031b3fe88c587c6537fad
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1100.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1100.pt
+deleted file mode 100644
+index afbda77..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1100.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:6b949121e0139c9f39c63914338b92010adaa219d2c1df65503f60e5cc5f4f77
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1150.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1150.pt
+deleted file mode 100644
+index 1381eea..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1150.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:4a14475fa70b4dc7241f5416398793f7f8d434e8a5dc647ca332b200f64e634f
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1200.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1200.pt
+deleted file mode 100644
+index 641636d..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1200.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:df161fac172a1c7473054808c06a18ce11b2e0304434d295bb1289878e5eb0c9
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1250.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1250.pt
+deleted file mode 100644
+index 2b57104..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1250.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:4da93a5d387602f4be204d6045091ace5da73add4f81cf93a04ad9dd4a60b27d
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1300.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1300.pt
+deleted file mode 100644
+index 60ae12e..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1300.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:70fe4e4415118ea7de46787ea67971c0edfb15167624d8281da8166c010467c0
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1350.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1350.pt
+deleted file mode 100644
+index e917e16..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1350.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:942e6bbb7f739c00e399c4e085fa6b0229ab28ef0b4822b7aab9df661816583c
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1400.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1400.pt
+deleted file mode 100644
+index 83c8347..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1400.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:68b8f2e49d41c5630b8f1f918ecfa23991ae4e7181711e79349fa0e75c8cd4f4
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1450.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1450.pt
+deleted file mode 100644
+index 0eecd43..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1450.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:770ece1329b80bb3d534dd357541f0218082d433dc8c35fc7c3afc54efa1d275
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_150.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_150.pt
+deleted file mode 100644
+index 913d250..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_150.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:79b71756ce010c88f23f98f5eb323e6602ba3afcba864e574a5629553a0cb654
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1500.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1500.pt
+deleted file mode 100644
+index 8c1119f..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1500.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:6d07177be0f7de65aad96e4d5836686a9de1f2042a39569445d8d95f9b1ee2ea
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1550.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1550.pt
+deleted file mode 100644
+index 067d80b..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1550.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:b519bb899dcd4d16535cf77a948c7f90fc529ce535cff7a7ad2031f441df663b
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1600.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1600.pt
+deleted file mode 100644
+index 993b6ed..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1600.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:0305b75163ad0cf54501c94ece7d2bfa9b382e3c32f45fe0195005b256c46c1a
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1650.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1650.pt
+deleted file mode 100644
+index b9cda79..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1650.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:c082ad0ba01a33f184c05a576347930fd14575515e499312ed51de48f542676c
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1700.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1700.pt
+deleted file mode 100644
+index 66b3041..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1700.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:62e86d4b2e3edd3092cf207caf154b96a9a8311d75ad7e869947ae6427e7b10e
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1750.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1750.pt
+deleted file mode 100644
+index 0806e46..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1750.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:42b4286fb35d30ad235a04cb76cf7ece6b1a93a2317de8469b21939f78cfe1a0
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1800.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1800.pt
+deleted file mode 100644
+index d4203f1..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1800.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:3e7064f90e4479cdd28af8d219855430831c90d9d71b7b3342d4e3c086ec3d29
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1850.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1850.pt
+deleted file mode 100644
+index 3bdd2bd..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1850.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:021ae9b1120e4facadc5aff145aa1079fb0d4cee5b4827126cae1444f3df62ed
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1900.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1900.pt
+deleted file mode 100644
+index 4a8745d..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1900.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:10321112c298cc2444472ced914e188048b93d226a71005330a200227651771d
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1950.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1950.pt
+deleted file mode 100644
+index b30e1f2..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1950.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:f8bb9bc80a808b470e48718b5eb40ea6dbb76752fe917f876cc6feaa4e489fe1
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1999.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1999.pt
+deleted file mode 100644
+index 9316406..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_1999.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:3144c3b56dfc89c9aa8a9c1b0a10e6cc9c3d18d75c1531a87485ad7dd993c146
+-size 983394
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_200.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_200.pt
+deleted file mode 100644
+index 80b48b2..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_200.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:08415703848dddf35edff2a03b9b170fccc3880575f72ae0797b58f0776e2875
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_250.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_250.pt
+deleted file mode 100644
+index 04913ec..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_250.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:a8c54146ef4e65d9a910b2ef56a2a891ee415444dc9b0bdaa23d222b84444271
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_300.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_300.pt
+deleted file mode 100644
+index 5223edc..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_300.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:75b050eaa5f16868a1d07bec55872125921a60019bb8b10c0b995c28194c12b9
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_350.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_350.pt
+deleted file mode 100644
+index 19d7655..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_350.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:d9398cccc57f2105c6aae764ae37b6d32299f8eb6683e8749d357d9bfe08a646
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_400.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_400.pt
+deleted file mode 100644
+index 745c4da..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_400.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:8fcff877cb594711d92ad036c6a6232d9087dd42908277cc5c371c11f7d84f5d
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_450.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_450.pt
+deleted file mode 100644
+index 8e9fff1..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_450.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:b9ac092e0f46c6b2a905d4ea23a02473d5cb04f06cddf762a110eb0ba26e8b46
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_50.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_50.pt
+deleted file mode 100644
+index a97cdf1..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_50.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:9bbeccc5d5baa5dddaae2168b5951bd0e44d674e4fb29126284cd8dc02bb857e
+-size 983250
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_500.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_500.pt
+deleted file mode 100644
+index 71e6cb5..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_500.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:a4282e4bf9718a8a2ff211384930a9f3ea800303918264ae9050b756369166b7
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_550.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_550.pt
+deleted file mode 100644
+index 8b0e0be..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_550.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:243dfc1917e129ab2dc7c7900a3e7c1b7e780ef55a669ddc776bbb166b460a33
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_600.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_600.pt
+deleted file mode 100644
+index d4812f0..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_600.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:2a9f21a3344067a7ca60393073a5e3d4db848574f0166f0514ceec635e3627a7
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_650.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_650.pt
+deleted file mode 100644
+index 5e50ce3..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_650.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:03fd81afea94236add881f745eb181ff7f1b422e7340d526a1875110f6eec1de
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_700.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_700.pt
+deleted file mode 100644
+index f807f1d..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_700.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:0ea28862342fedc8ea1c5918194910897df110709331f8386dfc9b917a1b15a4
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_750.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_750.pt
+deleted file mode 100644
+index fe66ad0..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_750.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:0132581490ed82aa97563cabaabfbe520ae764fb72d9f220467301b2c03972aa
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_800.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_800.pt
+deleted file mode 100644
+index 2821991..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_800.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:cbd74db9690546dfce6d9a94941e1078ef6dc6c9bb5b312d24ac0da1679a5e45
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_850.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_850.pt
+deleted file mode 100644
+index fe1703d..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_850.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:05d46a207173df9863702aed4d28cf192c7bec31e51bc9af1048ce07cefdc1f4
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_900.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_900.pt
+deleted file mode 100644
+index 1f4ed9c..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_900.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:a91900c38ee8d875de5529f0ef60e44dc78a6a3104acf30652b0bff8f1609c2e
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_950.pt b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_950.pt
+deleted file mode 100644
+index 70de261..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/model_950.pt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-version https://git-lfs.github.com/spec/v1
+-oid sha256:640c5ab53fdc7c5b2ef62bdc977c5cf5857ac261f3b251f938219933295fa744
+-size 983322
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/agent.pkl b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/agent.pkl
+deleted file mode 100644
+index 586c310..0000000
+Binary files a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/agent.pkl and /dev/null differ
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/agent.yaml b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/agent.yaml
+deleted file mode 100644
+index f4dd922..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/agent.yaml
++++ /dev/null
+@@ -1,40 +0,0 @@
+-seed: 42
+-device: cuda:0
+-num_steps_per_env: 24
+-max_iterations: 2000
+-empirical_normalization: false
+-policy:
+-  class_name: ActorCritic
+-  init_noise_std: 1.0
+-  actor_hidden_dims:
+-  - 128
+-  - 128
+-  - 128
+-  critic_hidden_dims:
+-  - 128
+-  - 128
+-  - 128
+-  activation: elu
+-algorithm:
+-  class_name: PPO
+-  value_loss_coef: 1.0
+-  use_clipped_value_loss: true
+-  clip_param: 0.2
+-  entropy_coef: 0.01
+-  num_learning_epochs: 5
+-  num_mini_batches: 4
+-  learning_rate: 0.001
+-  schedule: adaptive
+-  gamma: 0.99
+-  lam: 0.95
+-  desired_kl: 0.01
+-  max_grad_norm: 1.0
+-save_interval: 50
+-experiment_name: unitree_go2_flat
+-run_name: ''
+-logger: tensorboard
+-neptune_project: isaaclab
+-wandb_project: isaaclab
+-resume: false
+-load_run: .*
+-load_checkpoint: model_.*.pt
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/env.pkl b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/env.pkl
+deleted file mode 100644
+index be5c590..0000000
+Binary files a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/env.pkl and /dev/null differ
+diff --git a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/env.yaml b/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/env.yaml
+deleted file mode 100644
+index 6e67983..0000000
+--- a/logs/rsl_rl/unitree_go2_flat/2024-07-02_18-07-00/params/env.yaml
++++ /dev/null
+@@ -1,596 +0,0 @@
+-viewer:
+-  eye: !!python/tuple
+-  - 7.5
+-  - 7.5
+-  - 7.5
+-  lookat: !!python/tuple
+-  - 0.0
+-  - 0.0
+-  - 0.0
+-  cam_prim_path: /OmniverseKit_Persp
+-  resolution: !!python/tuple
+-  - 1280
+-  - 720
+-  origin_type: world
+-  env_index: 0
+-  asset_name: null
+-sim:
+-  physics_prim_path: /physicsScene
+-  dt: 0.005
+-  substeps: 1
+-  gravity: !!python/tuple
+-  - 0.0
+-  - 0.0
+-  - -9.81
+-  enable_scene_query_support: false
+-  use_fabric: true
+-  disable_contact_processing: true
+-  use_gpu_pipeline: true
+-  device: cuda:0
+-  physx:
+-    use_gpu: true
+-    solver_type: 1
+-    min_position_iteration_count: 1
+-    max_position_iteration_count: 255
+-    min_velocity_iteration_count: 0
+-    max_velocity_iteration_count: 255
+-    enable_ccd: false
+-    enable_stabilization: true
+-    enable_enhanced_determinism: false
+-    bounce_threshold_velocity: 0.5
+-    friction_offset_threshold: 0.04
+-    friction_correlation_distance: 0.025
+-    gpu_max_rigid_contact_count: 8388608
+-    gpu_max_rigid_patch_count: 163840
+-    gpu_found_lost_pairs_capacity: 2097152
+-    gpu_found_lost_aggregate_pairs_capacity: 33554432
+-    gpu_total_aggregate_pairs_capacity: 2097152
+-    gpu_collision_stack_size: 67108864
+-    gpu_heap_capacity: 67108864
+-    gpu_temp_buffer_capacity: 16777216
+-    gpu_max_num_partitions: 8
+-    gpu_max_soft_body_contacts: 1048576
+-    gpu_max_particle_contacts: 1048576
+-  physics_material:
+-    func: omni.isaac.lab.sim.spawners.materials.physics_materials:spawn_rigid_body_material
+-    static_friction: 1.0
+-    dynamic_friction: 1.0
+-    restitution: 0.0
+-    improve_patch_friction: true
+-    friction_combine_mode: multiply
+-    restitution_combine_mode: multiply
+-    compliant_contact_stiffness: 0.0
+-    compliant_contact_damping: 0.0
+-ui_window_class_type: omni.isaac.lab.envs.ui.manager_based_rl_env_window:ManagerBasedRLEnvWindow
+-decimation: 4
+-scene:
+-  num_envs: 4096
+-  env_spacing: 2.5
+-  lazy_sensor_update: true
+-  replicate_physics: true
+-  robot:
+-    class_type: omni.isaac.lab.assets.articulation.articulation:Articulation
+-    prim_path: /World/envs/env_.*/Robot
+-    spawn:
+-      func: omni.isaac.lab.sim.spawners.from_files.from_files:spawn_from_usd
+-      visible: true
+-      semantic_tags: null
+-      copy_from_source: true
+-      mass_props: null
+-      rigid_props:
+-        rigid_body_enabled: null
+-        kinematic_enabled: null
+-        disable_gravity: false
+-        linear_damping: 0.0
+-        angular_damping: 0.0
+-        max_linear_velocity: 1000.0
+-        max_angular_velocity: 1000.0
+-        max_depenetration_velocity: 1.0
+-        max_contact_impulse: null
+-        enable_gyroscopic_forces: null
+-        retain_accelerations: false
+-        solver_position_iteration_count: null
+-        solver_velocity_iteration_count: null
+-        sleep_threshold: null
+-        stabilization_threshold: null
+-      collision_props: null
+-      activate_contact_sensors: true
+-      scale: null
+-      articulation_props:
+-        articulation_enabled: null
+-        enabled_self_collisions: false
+-        solver_position_iteration_count: 4
+-        solver_velocity_iteration_count: 0
+-        sleep_threshold: null
+-        stabilization_threshold: null
+-        fix_root_link: null
+-      fixed_tendons_props: null
+-      joint_drive_props: null
+-      visual_material_path: material
+-      visual_material: null
+-      usd_path: http://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/4.0/Isaac/IsaacLab/Robots/Unitree/Go2/go2.usd
+-      variants: null
+-    init_state:
+-      pos: !!python/tuple
+-      - 0.0
+-      - 0.0
+-      - 0.4
+-      rot: &id003 !!python/tuple
+-      - 1.0
+-      - 0.0
+-      - 0.0
+-      - 0.0
+-      lin_vel: &id001 !!python/tuple
+-      - 0.0
+-      - 0.0
+-      - 0.0
+-      ang_vel: *id001
+-      joint_pos:
+-        .*L_hip_joint: 0.1
+-        .*R_hip_joint: -0.1
+-        F[L,R]_thigh_joint: 0.8
+-        R[L,R]_thigh_joint: 1.0
+-        .*_calf_joint: -1.5
+-      joint_vel:
+-        .*: 0.0
+-    collision_group: 0
+-    debug_vis: false
+-    soft_joint_pos_limit_factor: 0.9
+-    actuators:
+-      base_legs:
+-        class_type: omni.isaac.lab.actuators.actuator_pd:DCMotor
+-        joint_names_expr:
+-        - .*_hip_joint
+-        - .*_thigh_joint
+-        - .*_calf_joint
+-        effort_limit: 23.5
+-        velocity_limit: 30.0
+-        stiffness: 25.0
+-        damping: 0.5
+-        armature: null
+-        friction: 0.0
+-        saturation_effort: 23.5
+-  terrain:
+-    class_type: omni.isaac.lab.terrains.terrain_importer:TerrainImporter
+-    collision_group: -1
+-    prim_path: /World/ground
+-    num_envs: 4096
+-    terrain_type: plane
+-    terrain_generator: null
+-    usd_path: null
+-    env_spacing: 2.5
+-    visual_material:
+-      func: omni.isaac.lab.sim.spawners.materials.visual_materials:spawn_from_mdl_file
+-      mdl_path: http://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/4.0/Isaac/IsaacLab/Materials/TilesMarbleSpiderWhiteBrickBondHoned/TilesMarbleSpiderWhiteBrickBondHoned.mdl
+-      project_uvw: true
+-      albedo_brightness: null
+-      texture_scale: !!python/tuple
+-      - 0.25
+-      - 0.25
+-    physics_material:
+-      func: omni.isaac.lab.sim.spawners.materials.physics_materials:spawn_rigid_body_material
+-      static_friction: 1.0
+-      dynamic_friction: 1.0
+-      restitution: 0.0
+-      improve_patch_friction: true
+-      friction_combine_mode: multiply
+-      restitution_combine_mode: multiply
+-      compliant_contact_stiffness: 0.0
+-      compliant_contact_damping: 0.0
+-    max_init_terrain_level: 5
+-    debug_vis: false
+-  height_scanner: null
+-  contact_forces:
+-    class_type: omni.isaac.lab.sensors.contact_sensor.contact_sensor:ContactSensor
+-    prim_path: /World/envs/env_.*/Robot/.*
+-    update_period: 0.005
+-    history_length: 3
+-    debug_vis: false
+-    track_pose: false
+-    track_air_time: true
+-    force_threshold: 1.0
+-    filter_prim_paths_expr: []
+-    visualizer_cfg:
+-      prim_path: /Visuals/ContactSensor
+-      markers:
+-        contact:
+-          func: omni.isaac.lab.sim.spawners.shapes.shapes:spawn_sphere
+-          visible: true
+-          semantic_tags: null
+-          copy_from_source: true
+-          mass_props: null
+-          rigid_props: null
+-          collision_props: null
+-          activate_contact_sensors: false
+-          visual_material_path: material
+-          visual_material:
+-            func: omni.isaac.lab.sim.spawners.materials.visual_materials:spawn_preview_surface
+-            diffuse_color: !!python/tuple
+-            - 1.0
+-            - 0.0
+-            - 0.0
+-            emissive_color: &id002 !!python/tuple
+-            - 0.0
+-            - 0.0
+-            - 0.0
+-            roughness: 0.5
+-            metallic: 0.0
+-            opacity: 1.0
+-          physics_material_path: material
+-          physics_material: null
+-          radius: 0.02
+-        no_contact:
+-          func: omni.isaac.lab.sim.spawners.shapes.shapes:spawn_sphere
+-          visible: false
+-          semantic_tags: null
+-          copy_from_source: true
+-          mass_props: null
+-          rigid_props: null
+-          collision_props: null
+-          activate_contact_sensors: false
+-          visual_material_path: material
+-          visual_material:
+-            func: omni.isaac.lab.sim.spawners.materials.visual_materials:spawn_preview_surface
+-            diffuse_color: !!python/tuple
+-            - 0.0
+-            - 1.0
+-            - 0.0
+-            emissive_color: *id002
+-            roughness: 0.5
+-            metallic: 0.0
+-            opacity: 1.0
+-          physics_material_path: material
+-          physics_material: null
+-          radius: 0.02
+-  sky_light:
+-    class_type: {}
+-    prim_path: /World/skyLight
+-    spawn:
+-      func: omni.isaac.lab.sim.spawners.lights.lights:spawn_light
+-      visible: true
+-      semantic_tags: null
+-      copy_from_source: true
+-      prim_type: DomeLight
+-      color: !!python/tuple
+-      - 1.0
+-      - 1.0
+-      - 1.0
+-      enable_color_temperature: false
+-      color_temperature: 6500.0
+-      normalize: false
+-      exposure: 0.0
+-      intensity: 750.0
+-      texture_file: http://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/4.0/Isaac/Materials/Textures/Skies/PolyHaven/kloofendal_43d_clear_puresky_4k.hdr
+-      texture_format: automatic
+-      visible_in_primary_ray: true
+-    init_state:
+-      pos: !!python/tuple
+-      - 0.0
+-      - 0.0
+-      - 0.0
+-      rot: *id003
+-    collision_group: 0
+-    debug_vis: false
+-observations:
+-  policy:
+-    concatenate_terms: true
+-    enable_corruption: true
+-    base_lin_vel:
+-      func: omni.isaac.lab.envs.mdp.observations:base_lin_vel
+-      params: {}
+-      noise:
+-        func: omni.isaac.lab.utils.noise.noise_model:uniform_noise
+-        operation: add
+-        n_min: -0.1
+-        n_max: 0.1
+-      clip: null
+-      scale: null
+-    base_ang_vel:
+-      func: omni.isaac.lab.envs.mdp.observations:base_ang_vel
+-      params: {}
+-      noise:
+-        func: omni.isaac.lab.utils.noise.noise_model:uniform_noise
+-        operation: add
+-        n_min: -0.2
+-        n_max: 0.2
+-      clip: null
+-      scale: null
+-    projected_gravity:
+-      func: omni.isaac.lab.envs.mdp.observations:projected_gravity
+-      params: {}
+-      noise:
+-        func: omni.isaac.lab.utils.noise.noise_model:uniform_noise
+-        operation: add
+-        n_min: -0.05
+-        n_max: 0.05
+-      clip: null
+-      scale: null
+-    velocity_commands:
+-      func: omni.isaac.lab.envs.mdp.observations:generated_commands
+-      params:
+-        command_name: base_velocity
+-      noise: null
+-      clip: null
+-      scale: null
+-    joint_pos:
+-      func: omni.isaac.lab.envs.mdp.observations:joint_pos_rel
+-      params: {}
+-      noise:
+-        func: omni.isaac.lab.utils.noise.noise_model:uniform_noise
+-        operation: add
+-        n_min: -0.01
+-        n_max: 0.01
+-      clip: null
+-      scale: null
+-    joint_vel:
+-      func: omni.isaac.lab.envs.mdp.observations:joint_vel_rel
+-      params: {}
+-      noise:
+-        func: omni.isaac.lab.utils.noise.noise_model:uniform_noise
+-        operation: add
+-        n_min: -1.5
+-        n_max: 1.5
+-      clip: null
+-      scale: null
+-    actions:
+-      func: omni.isaac.lab.envs.mdp.observations:last_action
+-      params: {}
+-      noise: null
+-      clip: null
+-      scale: null
+-    height_scan: null
+-actions:
+-  joint_pos:
+-    class_type: omni.isaac.lab.envs.mdp.actions.joint_actions:JointPositionAction
+-    asset_name: robot
+-    debug_vis: false
+-    joint_names:
+-    - .*
+-    scale: 0.25
+-    offset: 0.0
+-    use_default_offset: true
+-events:
+-  physics_material:
+-    func: omni.isaac.lab.envs.mdp.events:randomize_rigid_body_material
+-    params:
+-      asset_cfg:
+-        name: robot
+-        joint_names: null
+-        joint_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        fixed_tendon_names: null
+-        fixed_tendon_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        body_names: .*
+-        body_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        preserve_order: false
+-      static_friction_range: !!python/tuple
+-      - 0.8
+-      - 0.8
+-      dynamic_friction_range: !!python/tuple
+-      - 0.6
+-      - 0.6
+-      restitution_range: &id004 !!python/tuple
+-      - 0.0
+-      - 0.0
+-      num_buckets: 64
+-    mode: startup
+-    interval_range_s: null
+-    is_global_time: false
+-  add_base_mass:
+-    func: omni.isaac.lab.envs.mdp.events:randomize_rigid_body_mass
+-    params:
+-      asset_cfg:
+-        name: robot
+-        joint_names: null
+-        joint_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        fixed_tendon_names: null
+-        fixed_tendon_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        body_names: base
+-        body_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        preserve_order: false
+-      mass_distribution_params: !!python/tuple
+-      - -1.0
+-      - 3.0
+-      operation: add
+-    mode: startup
+-    interval_range_s: null
+-    is_global_time: false
+-  base_external_force_torque:
+-    func: omni.isaac.lab.envs.mdp.events:apply_external_force_torque
+-    params:
+-      asset_cfg:
+-        name: robot
+-        joint_names: null
+-        joint_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        fixed_tendon_names: null
+-        fixed_tendon_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        body_names: base
+-        body_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        preserve_order: false
+-      force_range: *id004
+-      torque_range: !!python/tuple
+-      - -0.0
+-      - 0.0
+-    mode: reset
+-    interval_range_s: null
+-    is_global_time: false
+-  reset_base:
+-    func: omni.isaac.lab.envs.mdp.events:reset_root_state_uniform
+-    params:
+-      pose_range:
+-        x: &id005 !!python/tuple
+-        - -0.5
+-        - 0.5
+-        y: *id005
+-        yaw: !!python/tuple
+-        - -3.14
+-        - 3.14
+-      velocity_range:
+-        x: &id006 !!python/tuple
+-        - 0.0
+-        - 0.0
+-        y: *id006
+-        z: *id006
+-        roll: *id006
+-        pitch: *id006
+-        yaw: *id006
+-    mode: reset
+-    interval_range_s: null
+-    is_global_time: false
+-  reset_robot_joints:
+-    func: omni.isaac.lab.envs.mdp.events:reset_joints_by_scale
+-    params:
+-      position_range: !!python/tuple
+-      - 1.0
+-      - 1.0
+-      velocity_range: *id004
+-    mode: reset
+-    interval_range_s: null
+-    is_global_time: false
+-  push_robot: null
+-randomization: null
+-is_finite_horizon: false
+-episode_length_s: 20.0
+-rewards:
+-  track_lin_vel_xy_exp:
+-    func: omni.isaac.lab.envs.mdp.rewards:track_lin_vel_xy_exp
+-    params:
+-      command_name: base_velocity
+-      std: 0.5
+-    weight: 1.5
+-  track_ang_vel_z_exp:
+-    func: omni.isaac.lab.envs.mdp.rewards:track_ang_vel_z_exp
+-    params:
+-      command_name: base_velocity
+-      std: 0.5
+-    weight: 0.75
+-  lin_vel_z_l2:
+-    func: omni.isaac.lab.envs.mdp.rewards:lin_vel_z_l2
+-    params: {}
+-    weight: -2.0
+-  ang_vel_xy_l2:
+-    func: omni.isaac.lab.envs.mdp.rewards:ang_vel_xy_l2
+-    params: {}
+-    weight: -0.05
+-  dof_torques_l2:
+-    func: omni.isaac.lab.envs.mdp.rewards:joint_torques_l2
+-    params: {}
+-    weight: -0.0002
+-  dof_acc_l2:
+-    func: omni.isaac.lab.envs.mdp.rewards:joint_acc_l2
+-    params: {}
+-    weight: -2.5e-07
+-  action_rate_l2:
+-    func: omni.isaac.lab.envs.mdp.rewards:action_rate_l2
+-    params: {}
+-    weight: -0.01
+-  feet_air_time:
+-    func: omni.isaac.lab_tasks.manager_based.locomotion.velocity.mdp.rewards:feet_air_time
+-    params:
+-      sensor_cfg:
+-        name: contact_forces
+-        joint_names: null
+-        joint_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        fixed_tendon_names: null
+-        fixed_tendon_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        body_names: .*_foot
+-        body_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        preserve_order: false
+-      command_name: base_velocity
+-      threshold: 0.5
+-    weight: 0.25
+-  undesired_contacts: null
+-  flat_orientation_l2:
+-    func: omni.isaac.lab.envs.mdp.rewards:flat_orientation_l2
+-    params: {}
+-    weight: -2.5
+-  dof_pos_limits:
+-    func: omni.isaac.lab.envs.mdp.rewards:joint_pos_limits
+-    params: {}
+-    weight: 0.0
+-terminations:
+-  time_out:
+-    func: omni.isaac.lab.envs.mdp.terminations:time_out
+-    params: {}
+-    time_out: true
+-  base_contact:
+-    func: omni.isaac.lab.envs.mdp.terminations:illegal_contact
+-    params:
+-      sensor_cfg:
+-        name: contact_forces
+-        joint_names: null
+-        joint_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        fixed_tendon_names: null
+-        fixed_tendon_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        body_names: base
+-        body_ids: !!python/object/apply:builtins.slice
+-        - null
+-        - null
+-        - null
+-        preserve_order: false
+-      threshold: 1.0
+-    time_out: false
+-curriculum:
+-  terrain_levels: null
+-commands:
+-  base_velocity:
+-    class_type: omni.isaac.lab.envs.mdp.commands.velocity_command:UniformVelocityCommand
+-    resampling_time_range: !!python/tuple
+-    - 10.0
+-    - 10.0
+-    debug_vis: true
+-    asset_name: robot
+-    heading_command: true
+-    heading_control_stiffness: 0.5
+-    rel_standing_envs: 0.02
+-    rel_heading_envs: 1.0
+-    ranges:
+-      lin_vel_x: &id007 !!python/tuple
+-      - -1.0
+-      - 1.0
+-      lin_vel_y: *id007
+-      ang_vel_z: *id007
+-      heading: !!python/tuple
+-      - -3.141592653589793
+-      - 3.141592653589793
+diff --git a/logs/rsl_rl/unitree_go2_rough/2024-06-25_11-40-02/exported/policy.pt b/logs/rsl_rl/unitree_go2_rough/2024-06-25_11-40-02/exported/policy.pt
+index 48c7515..e4871c2 100644
+--- a/logs/rsl_rl/unitree_go2_rough/2024-06-25_11-40-02/exported/policy.pt
++++ b/logs/rsl_rl/unitree_go2_rough/2024-06-25_11-40-02/exported/policy.pt
+@@ -1,3 +1,3 @@
+ version https://git-lfs.github.com/spec/v1
+-oid sha256:76e5b5ae809ab0c36f4f58d2a38d4bc963aaa8fe8a83f1cea755ed83c729ae6a
++oid sha256:4f3a5bc39328df8ca0749e70725cecd0b6b563f9cfefaadad44e45739fc9d277
+ size 1158800
+diff --git a/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/flat_env_cfg.py b/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/flat_env_cfg.py
+index 1c3f41d..1ffdef2 100644
+--- a/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/flat_env_cfg.py
++++ b/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/config/unitree_go2/flat_env_cfg.py
+@@ -24,6 +24,8 @@ class UnitreeGo2FlatEnvCfg(UnitreeGo2RoughEnvCfg):
+         # no height scan
+         self.scene.height_scanner = None
+         self.observations.policy.height_scan = None
++        # EDIT: Gabriel Rodriguez - no linear body velocities
++        self.observations.policy.base_lin_vel = None
+         # no terrain curriculum
+         self.curriculum.terrain_levels = None
+ 
+diff --git a/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/velocity_env_cfg2.py b/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/velocity_env_cfg2.py
+index 0a7debf..6fe390b 100644
+--- a/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/velocity_env_cfg2.py
++++ b/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/locomotion/velocity/velocity_env_cfg2.py
+@@ -64,11 +64,14 @@ class MySceneCfg(InteractiveSceneCfg):
+     robot: ArticulationCfg = MISSING
+     # sensors - need to edit the ray caster to represent the one on the dog.
+     height_scanner = RayCasterCfg(
+-        prim_path="{ENV_REGEX_NS}/Robot/base",
+-        offset=RayCasterCfg.OffsetCfg(pos=(0.0, 0.0, 0.0)),
++        prim_path="{ENV_REGEX_NS}/Robot/base/radar_joint",
++        offset=RayCasterCfg.OffsetCfg(pos=(0.0, 0.0, 0.0), rot=(1.0, 0.0, 0.0, 0.0)),
++        #offset=RayCasterCfg.OffsetCfg(pos=(0.28945, 0.0, -0.0468250), rot=(0.131316, 0, 0.9913406, 0)),
+         attach_yaw_only=True,
+         pattern_cfg=patterns.GridPatternCfg(resolution=0.1, size=[1.6, 1.0]),
++        #pattern_cfg=patterns.GridPatternCfg(resolution=0.06, size=[128*0.06, 128*0.06]),
+         debug_vis=True,
++        drift_range=(0.0, 0.1),
+         mesh_prim_paths=["/World/ground"],
+     )
+     contact_forces = ContactSensorCfg(prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=3, track_air_time=True)

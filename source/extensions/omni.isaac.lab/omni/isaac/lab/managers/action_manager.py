@@ -208,7 +208,6 @@ class ActionManager(ManagerBase):
         # convert table to string
         msg += table.get_string()
         msg += "\n"
-
         return msg
 
     """

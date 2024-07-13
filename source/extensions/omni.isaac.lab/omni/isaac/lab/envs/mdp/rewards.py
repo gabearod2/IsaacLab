@@ -98,7 +98,7 @@ def flat_orientation_l2(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = Scen
 
 
 def base_height_l2(
-    env: ManagerBasedRLEnv, target_height: float, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")
+    env: ManagerBasedRLEnv, command_name: str, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")
 ) -> torch.Tensor:
     """Penalize asset height from its target using L2-kernel.
 
@@ -107,8 +107,26 @@ def base_height_l2(
     """
     # extract the used quantities (to enable type-hinting)
     asset: RigidObject = env.scene[asset_cfg.name]
+    target_height = env.command_manager.get_command(command_name)[:, 2]
+    #print(asset.data.root_pos_w[:, 2])
+    #print(target_height)
     # TODO: Fix this for rough-terrain.
     return torch.square(asset.data.root_pos_w[:, 2] - target_height)
+
+
+def track_pose_exp(
+    env: ManagerBasedRLEnv, std: float, command_name: str, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")
+) -> torch.Tensor:
+    """Reward tracking of base positions using exponential kernel."""
+    # extract the used quantities (to enable type-hinting)
+    asset: RigidObject = env.scene[asset_cfg.name]
+    # compute the error
+    body_pose_error = torch.sum(
+        torch.square(env.command_manager.get_command(command_name)[:, :3] - asset.data.root_pos_w[:, :3]),
+        dim=1,
+    )
+    print(body_pose_error)
+    return torch.exp(-body_pose_error / std**2)
 
 
 def body_lin_acc_l2(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")) -> torch.Tensor:

@@ -45,6 +45,8 @@ def base_ang_vel(env: ManagerBasedEnv, asset_cfg: SceneEntityCfg = SceneEntityCf
     """Root angular velocity in the asset's root frame."""
     # extract the used quantities (to enable type-hinting)
     asset: RigidObject = env.scene[asset_cfg.name]
+    print('angular velocity')
+    print(asset.data.root_ang_vel_b)
     return asset.data.root_ang_vel_b
 
 
@@ -52,6 +54,8 @@ def projected_gravity(env: ManagerBasedEnv, asset_cfg: SceneEntityCfg = SceneEnt
     """Gravity projection on the asset's root frame."""
     # extract the used quantities (to enable type-hinting)
     asset: RigidObject = env.scene[asset_cfg.name]
+    print('projected_gravity')
+    print(asset.data.projected_gravity_b)
     return asset.data.projected_gravity_b
 
 
@@ -105,6 +109,8 @@ def joint_pos(env: ManagerBasedEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg("
     """
     # extract the used quantities (to enable type-hinting)
     asset: Articulation = env.scene[asset_cfg.name]
+    print('joint positions')
+    print(asset.data.joint_pos[:, asset_cfg.joint_ids])
     return asset.data.joint_pos[:, asset_cfg.joint_ids]
 
 
@@ -115,7 +121,8 @@ def joint_pos_rel(env: ManagerBasedEnv, asset_cfg: SceneEntityCfg = SceneEntityC
     """
     # extract the used quantities (to enable type-hinting)
     asset: Articulation = env.scene[asset_cfg.name]
-    #print(asset.data.default_joint_pos)
+    print('default joint pos')
+    print(asset.data.default_joint_pos)
     return asset.data.joint_pos[:, asset_cfg.joint_ids] - asset.data.default_joint_pos[:, asset_cfg.joint_ids]
 
 
@@ -202,10 +209,16 @@ def last_action(env: ManagerBasedEnv, action_name: str | None = None) -> torch.T
     The name of the action term for which the action is required. If None, the
     entire action tensor is returned.
     """
+
     if action_name is None:
+        print('observations action')
+        print(env.action_manager.action)
         return env.action_manager.action
     else:
+        print('observation action')
+        print(env.action_manager.get_term(action_name).raw_actions)
         return env.action_manager.get_term(action_name).raw_actions
+
 
 
 """
