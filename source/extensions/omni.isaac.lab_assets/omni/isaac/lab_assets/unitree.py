@@ -44,7 +44,6 @@ Actuator specifications: https://shop.unitree.com/products/go1-motor
 This model is taken from: https://github.com/Improbable-AI/walk-these-ways
 """
 
-
 ##
 # Configuration
 ##
@@ -96,7 +95,6 @@ UNITREE_A1_CFG = ArticulationCfg(
 Note: Specifications taken from: https://www.trossenrobotics.com/a1-quadruped#specifications
 """
 
-
 UNITREE_GO1_CFG = ArticulationCfg(
     spawn=sim_utils.UsdFileCfg(
         usd_path=f"{ISAACLAB_NUCLEUS_DIR}/Robots/Unitree/Go1/go1.usd",
@@ -132,7 +130,6 @@ UNITREE_GO1_CFG = ArticulationCfg(
 )
 """Configuration of Unitree Go1 using MLP-based actuator model."""
 
-
 UNITREE_GO2_CFG = ArticulationCfg(
     spawn=sim_utils.UsdFileCfg(
         usd_path=f"{ISAACLAB_NUCLEUS_DIR}/Robots/Unitree/Go2/go2.usd",
@@ -153,14 +150,14 @@ UNITREE_GO2_CFG = ArticulationCfg(
     init_state=ArticulationCfg.InitialStateCfg(
         pos=(0.0, 0.0, 0.4),
         joint_pos={
-            ".*L_hip_joint": 0.1,
+            ".*L_hip_joint": 0.1,  # Original Settings from Isaac Lab
             ".*R_hip_joint": -0.1,
-            "F[L,R]_thigh_joint": 1.0,
+            "F[L,R]_thigh_joint": 0.8,
             "R[L,R]_thigh_joint": 1.0,
             ".*_calf_joint": -1.5,
-            #".*_hip_joint": -0.126,
-            #".*_thigh_joint": 1.22,
-            #".*_calf_joint": -2.7,
+            # ".*_hip_joint": -0.126,
+            # ".*_thigh_joint": 1.22,
+            # ".*_calf_joint": -2.7,
         },
         joint_vel={".*": 0.0},
     ),
@@ -178,7 +175,6 @@ UNITREE_GO2_CFG = ArticulationCfg(
     },
 )
 """Configuration of Unitree Go2 using DC-Motor actuator model."""
-
 
 H1_CFG = ArticulationCfg(
     spawn=sim_utils.UsdFileCfg(
@@ -262,14 +258,12 @@ H1_CFG = ArticulationCfg(
 )
 """Configuration for the Unitree H1 Humanoid robot."""
 
-
 H1_MINIMAL_CFG = H1_CFG.copy()
 H1_MINIMAL_CFG.spawn.usd_path = f"{ISAACLAB_NUCLEUS_DIR}/Robots/Unitree/H1/h1_minimal.usd"
 """Configuration for the Unitree H1 Humanoid robot with fewer collision meshes.
 
 This configuration removes most collision meshes to speed up simulation.
 """
-
 
 G1_CFG = ArticulationCfg(
     spawn=sim_utils.UsdFileCfg(
@@ -379,7 +373,6 @@ G1_CFG = ArticulationCfg(
     },
 )
 """Configuration for the Unitree G1 Humanoid robot."""
-
 
 G1_MINIMAL_CFG = G1_CFG.copy()
 G1_MINIMAL_CFG.spawn.usd_path = f"{ISAACLAB_NUCLEUS_DIR}/Robots/Unitree/G1/g1_minimal.usd"
