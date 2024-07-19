@@ -69,6 +69,7 @@ def main():
     log_root_path = os.path.abspath(log_root_path)
     print(f"[INFO] Loading experiment from directory: {log_root_path}")
     resume_path = get_checkpoint_path(log_root_path, agent_cfg.load_run, agent_cfg.load_checkpoint)
+    # resume_path = get_checkpoint_path(log_root_path, '2024-07-18_10-57-11', agent_cfg.load_checkpoint)
     print(f"[INFO]: Loading model checkpoint from: {resume_path}")
 
     # load previously trained model

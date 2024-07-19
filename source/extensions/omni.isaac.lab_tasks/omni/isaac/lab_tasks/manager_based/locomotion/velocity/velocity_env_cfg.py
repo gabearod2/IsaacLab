@@ -100,7 +100,7 @@ class CommandsCfg:
         heading_control_stiffness=0.6,
         debug_vis=True,
         ranges=mdp.UniformVelocityCommandCfg.Ranges(
-            lin_vel_x=(-1.0, 1.0), lin_vel_y=(-1.0, 1.0), ang_vel_z=(-1.0, 1.0), heading=(-math.pi, math.pi)
+            lin_vel_x=(-1.5, 1.5), lin_vel_y=(-1.5, 1.5), ang_vel_z=(-1.5, 1.5), heading=(-math.pi, math.pi)
         ),
     )
 
@@ -179,8 +179,8 @@ class EventCfg:
         mode="reset",
         params={
             "asset_cfg": SceneEntityCfg("robot", body_names="base"),
-            "force_range": (-1.0, 1.0),
-            "torque_range": (-1.0, 1.0),
+            "force_range": (-0.0, 0.0),
+            "torque_range": (-0.0, 0.0),
         },
     )
 
@@ -190,12 +190,12 @@ class EventCfg:
         params={
             "pose_range": {"x": (-0.5, 0.5), "y": (-0.5, 0.5), "yaw": (-3.14, 3.14)},
             "velocity_range": {
-                "x": (-0.5, 0.5),
-                "y": (-0.5, 0.5),
-                "z": (-0.5, 0.5),
-                "roll": (-0.5, 0.5),
-                "pitch": (-0.5, 0.5),
-                "yaw": (-0.5, 0.5),
+                "x": (-0.0, 0.0),
+                "y": (-0.0, 0.0),
+                "z": (-0.0, 0.0),
+                "roll": (-0.0, 0.0),
+                "pitch": (-0.0, 0.0),
+                "yaw": (-0.0, 0.0),
             },
         },
     )
@@ -221,14 +221,13 @@ class EventCfg:
 @configclass
 class RewardsCfg:
     """Reward terms for the MDP."""
-    # -- task
+    # FROM SPOT
     air_time = RewardTermCfg(
-        func=mdp.air_time_reward,
-        weight=3.0,
+        func=mdp.feet_air_time,
+        weight=5.0,
         params={
-            "mode_time": 0.3,
-            "velocity_threshold": 0.5,
-            "asset_cfg": SceneEntityCfg("robot"),
+            "threshold": 0.0,
+            "command_name": "base_velocity",
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_foot"),
         },
     )
@@ -244,29 +243,25 @@ class RewardsCfg:
     )
     foot_clearance = RewardTermCfg(
         func=mdp.foot_clearance_reward,
-        weight=0.5,
+        weight=5.0,
         params={
-            "std": 0.05,
-            "tanh_mult": 2.0,
-            "target_height": 0.04,
+            "std": 0.01,
+            "target_height": 0.10,
             "asset_cfg": SceneEntityCfg("robot", body_names=".*_foot"),
         },
     )
     gait = RewardTermCfg(
         func=mdp.GaitReward,
-        weight=4.0,
+        weight=5.0,
         params={
-            "std": 0.1,
+            "std": 0.05,
             "max_err": 0.2,
-            "velocity_threshold": 0.5,
+            "velocity_threshold": 0.0,
             "synced_feet_pair_names": (("FL_foot", "RR_foot"), ("FR_foot", "RL_foot")),
             "asset_cfg": SceneEntityCfg("robot"),
             "sensor_cfg": SceneEntityCfg("contact_forces"),
         },
     )
-
-    # -- penalties
-    base_height_l2 = RewardTermCfg(func=mdp.base_height_l2, weight=-1.0, params={'target_height': 0.22})
     action_smoothness = RewardTermCfg(func=mdp.action_smoothness_penalty, weight=-1.0)
     air_time_variance = RewardTermCfg(
         func=mdp.air_time_variance_penalty,
@@ -281,7 +276,7 @@ class RewardsCfg:
     )
     foot_slip = RewardTermCfg(
         func=mdp.foot_slip_penalty,
-        weight=-0.5,
+        weight=-1.5,
         params={
             "asset_cfg": SceneEntityCfg("robot", body_names=".*_foot"),
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_foot"),
@@ -295,11 +290,11 @@ class RewardsCfg:
     )
     joint_pos = RewardTermCfg(
         func=mdp.joint_position_penalty,
-        weight=-0.7,
+        weight=-0.3,
         params={
             "asset_cfg": SceneEntityCfg("robot", joint_names=".*"),
             "stand_still_scale": 5.0,
-            "velocity_threshold": 0.5,
+            "velocity_threshold": 0.0,
         },
     )
     joint_torques = RewardTermCfg(
@@ -312,19 +307,28 @@ class RewardsCfg:
         weight=-1.0e-2,
         params={"asset_cfg": SceneEntityCfg("robot", joint_names=".*")},
     )
-    # -- task -- OUTDATED AND SET TO 0
-    track_lin_vel_xy_exp = RewardTermCfg(
-        func=mdp.track_lin_vel_xy_exp, weight=0.0, params={"command_name": "base_velocity", "std": math.sqrt(0.25)}
+    # ADDITIONAL PENALTIES
+    base_height_l2 = RewardTermCfg(
+        func=mdp.base_height_l2,
+        weight=-1.0,
+        params={
+            'target_height': 0.20,
+            "asset_cfg": SceneEntityCfg("robot", body_names="base")
+        },
     )
-    track_ang_vel_z_exp = RewardTermCfg(
-        func=mdp.track_ang_vel_z_exp, weight=0.0, params={"command_name": "base_velocity", "std": math.sqrt(0.25)}
+    flat_orientation_l2 = RewardTermCfg(func=mdp.flat_orientation_l2, weight=-2.5)
+    action_rate_l2 = RewardTermCfg(func=mdp.action_rate_l2, weight=-0.0)
+    undesired_contact_thigh = RewardTermCfg(
+        func=mdp.undesired_contacts,
+        weight=-2.0,
+        params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_thigh"), "threshold": 1.0},
     )
-    # -- penalties
-    lin_vel_z_l2 = RewardTermCfg(func=mdp.lin_vel_z_l2, weight=0.0)
-    ang_vel_xy_l2 = RewardTermCfg(func=mdp.ang_vel_xy_l2, weight=0.0)
-    dof_torques_l2 = RewardTermCfg(func=mdp.joint_torques_l2, weight=0.0)
-    dof_acc_l2 = RewardTermCfg(func=mdp.joint_acc_l2, weight=0.0)
-    action_rate_l2 = RewardTermCfg(func=mdp.action_rate_l2, weight=0.0)
+    undesired_contacts_calf = RewardTermCfg(
+        func=mdp.undesired_contacts,
+        weight=-2.0,
+        params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_calf"), "threshold": 1.0},
+    )
+    # -- FOR NO ERRORS --
     feet_air_time = RewardTermCfg(
         func=mdp.feet_air_time,
         weight=0.0,
@@ -334,14 +338,8 @@ class RewardsCfg:
             "threshold": 0.5,
         },
     )
-    undesired_contacts = RewardTermCfg(
-        func=mdp.undesired_contacts,
-        weight=-1.0,
-        params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_thigh"), "threshold": 1.0},
-    )
-    # -- optional penalties
-    flat_orientation_l2 = RewardTermCfg(func=mdp.flat_orientation_l2, weight=-2.5)
-    dof_pos_limits = RewardTermCfg(func=mdp.joint_pos_limits, weight=0.0)
+    dof_torques_l2 = RewardTermCfg(func=mdp.joint_torques_l2, weight=0.0)
+
 
 @configclass
 class TerminationsCfg:
@@ -352,10 +350,7 @@ class TerminationsCfg:
         func=mdp.illegal_contact,
         params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names="base"), "threshold": 0.1},
     )
-    bad_orientation = DoneTerm(
-        func=mdp.bad_orientation,
-        params={'limit_angle': 1.3}
-    )
+
 
 
 @configclass
