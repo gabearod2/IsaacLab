@@ -17,7 +17,7 @@ from omni.isaac.lab.managers import RewardTermCfg
 from omni.isaac.lab.managers import SceneEntityCfg
 from omni.isaac.lab.managers import TerminationTermCfg as DoneTerm
 from omni.isaac.lab.scene import InteractiveSceneCfg
-from omni.isaac.lab.sensors import ContactSensorCfg, RayCasterCfg, patterns
+from omni.isaac.lab.sensors import ContactSensorCfg, RayCasterCfg, patterns, RayCasterCameraCfg
 from omni.isaac.lab.terrains import TerrainImporterCfg
 from omni.isaac.lab.utils import configclass
 from omni.isaac.lab.utils.assets import ISAAC_NUCLEUS_DIR, ISAACLAB_NUCLEUS_DIR
@@ -67,10 +67,19 @@ class MySceneCfg(InteractiveSceneCfg):
         prim_path="{ENV_REGEX_NS}/Robot/base",
         offset=RayCasterCfg.OffsetCfg(pos=(0.0, 0.0, 20.0)),
         attach_yaw_only=True,
-        pattern_cfg=patterns.GridPatternCfg(resolution=0.1, size=[1.6, 1.0]),
-        debug_vis=False,
+        pattern_cfg=patterns.GridPatternCfg(resolution=0.1, size=[1.6, 1.0], direction=(0.0, 0.0, -1.0)),
+        debug_vis=True,
         mesh_prim_paths=["/World/ground"],
     )
+    # depth_camera = RayCasterCameraCfg(
+    #     prim_path="{ENV_REGEX_NS}/Robot/base",
+    #     offset=RayCasterCfg.OffsetCfg(pos=(0.0, 0.0, 0.0)),
+    #     attach_yaw_only=True,
+    #     pattern_cfg=patterns.GridPatternCfg(resolution=0.1, size=[1.6, 1.0], direction=(1.0, 0.0, 0.0)),
+    #     debug_vis=True,
+    #     mesh_prim_paths=["/World/ground"],
+    #
+    # )
     contact_forces = ContactSensorCfg(prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=3, track_air_time=True)
     # lights
     sky_light = AssetBaseCfg(
@@ -100,7 +109,7 @@ class CommandsCfg:
         heading_control_stiffness=0.6,
         debug_vis=True,
         ranges=mdp.UniformVelocityCommandCfg.Ranges(
-            lin_vel_x=(-1.5, 1.5), lin_vel_y=(-1.5, 1.5), ang_vel_z=(-1.5, 1.5), heading=(-math.pi, math.pi)
+            lin_vel_x=(-1.0, 1.0), lin_vel_y=(-1.0, 1.0), ang_vel_z=(-1.0, 1.0), heading=(-math.pi, math.pi)
         ),
     )
 
@@ -133,10 +142,16 @@ class ObservationsCfg:
         actions = ObsTerm(func=mdp.last_action)
         height_scan = ObsTerm(
             func=mdp.height_scan,
-            params={"sensor_cfg": SceneEntityCfg("height_scanner")},
+            params={"sensor_cfg": SceneEntityCfg("height_scanner"), "offset": 0.0},
             noise=Unoise(n_min=-0.1, n_max=0.1),
             clip=(-1.0, 1.0),
         )  # Also removed in flat_env_cfg.py
+        # depth_camera_scan = ObsTerm(
+        #     func=mdp.height_scan,
+        #     params={"sensor_cfg": SceneEntityCfg("depth_camera"), "offset": 0.0},
+        #     noise=Unoise(n_min=-0.1, n_max=0.1),
+        #     clip=(-1.0, 1.0),
+        # )  # Also removed in flat_env_cfg.py
 
         def __post_init__(self):
             self.enable_corruption = True
@@ -221,13 +236,14 @@ class EventCfg:
 @configclass
 class RewardsCfg:
     """Reward terms for the MDP."""
-    # FROM SPOT
+
     air_time = RewardTermCfg(
-        func=mdp.feet_air_time,
-        weight=5.0,
+        func=mdp.air_time_reward,
+        weight=1.0,
         params={
-            "threshold": 0.0,
-            "command_name": "base_velocity",
+            "mode_time": 0.1,
+            "velocity_threshold": 0.3,
+            "asset_cfg": SceneEntityCfg("robot"),
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_foot"),
         },
     )
@@ -238,45 +254,45 @@ class RewardsCfg:
     )
     base_linear_velocity = RewardTermCfg(
         func=mdp.base_linear_velocity_reward,
-        weight=5.0,
+        weight=10.0,
         params={"std": 1.0, "ramp_rate": 0.5, "ramp_at_vel": 1.0, "asset_cfg": SceneEntityCfg("robot")},
     )
     foot_clearance = RewardTermCfg(
         func=mdp.foot_clearance_reward,
         weight=5.0,
         params={
-            "std": 0.01,
-            "target_height": 0.10,
+            "std": 0.02,
+            "target_height": 0.08,
             "asset_cfg": SceneEntityCfg("robot", body_names=".*_foot"),
         },
     )
     gait = RewardTermCfg(
         func=mdp.GaitReward,
-        weight=5.0,
+        weight=15.0,
         params={
-            "std": 0.05,
-            "max_err": 0.2,
+            "std": 0.1,
+            "max_err": 0.3,
             "velocity_threshold": 0.0,
             "synced_feet_pair_names": (("FL_foot", "RR_foot"), ("FR_foot", "RL_foot")),
             "asset_cfg": SceneEntityCfg("robot"),
             "sensor_cfg": SceneEntityCfg("contact_forces"),
         },
     )
-    action_smoothness = RewardTermCfg(func=mdp.action_smoothness_penalty, weight=-1.0)
+    action_smoothness = RewardTermCfg(func=mdp.action_smoothness_penalty, weight=-2.0)
     air_time_variance = RewardTermCfg(
         func=mdp.air_time_variance_penalty,
-        weight=-1.0,
+        weight=-3.0,
         params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_foot")},
     )
     base_motion = RewardTermCfg(
-        func=mdp.base_motion_penalty, weight=-2.0, params={"asset_cfg": SceneEntityCfg("robot")}
+        func=mdp.base_motion_penalty, weight=-2.5, params={"asset_cfg": SceneEntityCfg("robot")}
     )
     base_orientation = RewardTermCfg(
         func=mdp.base_orientation_penalty, weight=0.0, params={"asset_cfg": SceneEntityCfg("robot")}
     )
     foot_slip = RewardTermCfg(
         func=mdp.foot_slip_penalty,
-        weight=-1.5,
+        weight=-1.5,  # -2.5
         params={
             "asset_cfg": SceneEntityCfg("robot", body_names=".*_foot"),
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_foot"),
@@ -310,14 +326,13 @@ class RewardsCfg:
     # ADDITIONAL PENALTIES
     base_height_l2 = RewardTermCfg(
         func=mdp.base_height_l2,
-        weight=-1.0,
+        weight=-6.0,
         params={
-            'target_height': 0.20,
+            'target_height': 0.18,
             "asset_cfg": SceneEntityCfg("robot", body_names="base")
         },
     )
-    flat_orientation_l2 = RewardTermCfg(func=mdp.flat_orientation_l2, weight=-2.5)
-    action_rate_l2 = RewardTermCfg(func=mdp.action_rate_l2, weight=-0.0)
+    flat_orientation_l2 = RewardTermCfg(func=mdp.flat_orientation_l2, weight=-3.0)
     undesired_contact_thigh = RewardTermCfg(
         func=mdp.undesired_contacts,
         weight=-2.0,
@@ -328,17 +343,17 @@ class RewardsCfg:
         weight=-2.0,
         params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_calf"), "threshold": 1.0},
     )
-    # -- FOR NO ERRORS --
+    action_rate_l2 = RewardTermCfg(func=mdp.action_rate_l2, weight=-0.0)
+    dof_torques_l2 = RewardTermCfg(func=mdp.joint_torques_l2, weight=0.0)
     feet_air_time = RewardTermCfg(
         func=mdp.feet_air_time,
         weight=0.0,
         params={
-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_foot"),
+            "threshold": 0.08,
             "command_name": "base_velocity",
-            "threshold": 0.5,
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*_foot"),
         },
     )
-    dof_torques_l2 = RewardTermCfg(func=mdp.joint_torques_l2, weight=0.0)
 
 
 @configclass
@@ -349,6 +364,10 @@ class TerminationsCfg:
     base_contact = DoneTerm(
         func=mdp.illegal_contact,
         params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names="base"), "threshold": 0.1},
+    )
+    head_contact = DoneTerm(
+        func=mdp.illegal_contact,
+        params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names="Head_lower"), "threshold": 0.1}
     )
 
 
@@ -394,6 +413,8 @@ class LocomotionVelocityRoughEnvCfg(ManagerBasedRLEnvCfg):
         # we tick all the sensors based on the smallest update period (physics update period)
         if self.scene.height_scanner is not None:
             self.scene.height_scanner.update_period = self.decimation * self.sim.dt
+        # if self.scene.depth_camera is not None:
+        #     self.scene.depth_camera.update_period = self.decimation * self.sim.dt
         if self.scene.contact_forces is not None:
             self.scene.contact_forces.update_period = self.sim.dt
 

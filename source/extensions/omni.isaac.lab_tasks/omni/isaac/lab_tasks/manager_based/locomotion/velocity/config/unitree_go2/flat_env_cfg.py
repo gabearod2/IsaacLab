@@ -18,7 +18,9 @@ class UnitreeGo2FlatEnvCfg(UnitreeGo2RoughEnvCfg):
         self.scene.terrain.terrain_generator = None
         # no height scan or base angular velocity
         self.scene.height_scanner = None
+        self.scene.depth_camera = None
         self.observations.policy.height_scan = None
+        self.observations.policy.depth_camera_scan = None
         self.observations.policy.base_lin_vel = None
         # no terrain curriculum
         self.curriculum.terrain_levels = None
@@ -35,5 +37,5 @@ class UnitreeGo2FlatEnvCfg_PLAY(UnitreeGo2FlatEnvCfg):
         # disable randomization for play
         self.observations.policy.enable_corruption = False
         # remove random pushing event
-        # self.events.base_external_force_torque = None
-        # self.events.push_robot = None
+        self.events.base_external_force_torque = None
+        self.events.push_robot = None

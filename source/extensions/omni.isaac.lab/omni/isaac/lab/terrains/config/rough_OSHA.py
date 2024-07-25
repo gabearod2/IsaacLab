@@ -7,10 +7,11 @@
 
 import omni.isaac.lab.terrains as terrain_gen
 
-from ..terrain_generator_cfg import TerrainGeneratorCfg
+from ..terrain_generator_cfg import TerrainGeneratorCfg, FlatPatchSamplingCfg
 
 """
-Edited to include the optimal training environments for the power plant conditions.
+Edited to include the optimal training environments for the power plant conditions, and finding flat patches for 
+training navigation. 
 - Gabriel Rodriguez
 """
 
@@ -26,12 +27,13 @@ ROUGH_TERRAINS_CFG_OSHA = TerrainGeneratorCfg(
     sub_terrains={
         "flat_terrain": terrain_gen.MeshPlaneTerrainCfg(
             proportion=0.25,
-        ),
-        "rails_terrain": terrain_gen.MeshRailsTerrainCfg(
-            proportion=0.1,
-            rail_thickness_range=(0.1, 0.2),
-            rail_height_range=(0.1, 0.2),
-            platform_width=3.0,
+            flat_patch_sampling={
+                "target": FlatPatchSamplingCfg(
+                    num_patches=1,
+                    patch_radius=4.0,
+                    max_height_diff=0.1,
+                )
+            }
         ),
         "pyramid_open_stairs": terrain_gen.MeshPyramidOpenStairsTerrainCfg(
             proportion=0.25,
@@ -41,6 +43,13 @@ ROUGH_TERRAINS_CFG_OSHA = TerrainGeneratorCfg(
             platform_width=2.0,
             border_width=0.1,
             holes=False,
+            flat_patch_sampling={
+                "target": FlatPatchSamplingCfg(
+                    num_patches=1,
+                    patch_radius=1.0,
+                    max_height_diff=0.1,
+                )
+            }
         ),
         "pyramid_open_stairs_inv": terrain_gen.MeshInvertedPyramidOpenStairsTerrainCfg(
             proportion=0.25,
@@ -50,6 +59,13 @@ ROUGH_TERRAINS_CFG_OSHA = TerrainGeneratorCfg(
             platform_width=2.0,
             border_width=0.1,
             holes=False,
+            flat_patch_sampling={
+                "target": FlatPatchSamplingCfg(
+                    num_patches=1,
+                    patch_radius=1.0,
+                    max_height_diff=0.1,
+                )
+            }
         ),
         "pyramid_stairs": terrain_gen.MeshPyramidStairsTerrainCfg(
             proportion=0.2,
@@ -58,6 +74,13 @@ ROUGH_TERRAINS_CFG_OSHA = TerrainGeneratorCfg(
             platform_width=2.0,
             border_width=0.1,
             holes=False,
+            flat_patch_sampling={
+                "target": FlatPatchSamplingCfg(
+                    num_patches=1,
+                    patch_radius=1.0,
+                    max_height_diff=0.1,
+                )
+            }
         ),
         "pyramid_stairs_inv": terrain_gen.MeshInvertedPyramidStairsTerrainCfg(
             proportion=0.2,
@@ -66,19 +89,54 @@ ROUGH_TERRAINS_CFG_OSHA = TerrainGeneratorCfg(
             platform_width=2.0,
             border_width=0.1,
             holes=False,
+            flat_patch_sampling={
+                "target": FlatPatchSamplingCfg(
+                    num_patches=1,
+                    patch_radius=1.0,
+                    max_height_diff=0.1,
+                )
+            }
         ),
         "boxes": terrain_gen.MeshRandomGridTerrainCfg(
-            proportion=0.2, grid_width=0.45, grid_height_range=(0.05, 0.2), platform_width=2.0
+            proportion=0.2, grid_width=0.45, grid_height_range=(0.05, 0.2), platform_width=2.0,
+            flat_patch_sampling={
+                "target": FlatPatchSamplingCfg(
+                    num_patches=1,
+                    patch_radius=1.0,
+                    max_height_diff=0.1,
+                )
+            }
         ),
         "random_rough": terrain_gen.HfRandomUniformTerrainCfg(
-            proportion=0.2, noise_range=(0.02, 0.10), noise_step=0.02, border_width=0.25
+            proportion=0.2, noise_range=(0.02, 0.10), noise_step=0.02, border_width=0.5,
+            flat_patch_sampling={
+                "target": FlatPatchSamplingCfg(
+                    num_patches=1,
+                    patch_radius=0.25,
+                    max_height_diff=0.1,
+                )
+            }
         ),
-        "hf_pyramid_slope": terrain_gen.HfPyramidSlopedTerrainCfg(
-            proportion=0.2, slope_range=(0.2, 0.3), platform_width=0, border_width=0.1
-        ),
-        "hf_pyramid_slope_inv": terrain_gen.HfInvertedPyramidSlopedTerrainCfg(
-            proportion=0.2, slope_range=(0.2, 0.3), platform_width=0, border_width=0.1
-        ),
+        # "hf_pyramid_slope": terrain_gen.HfPyramidSlopedTerrainCfg(
+        #     proportion=0.2, slope_range=(0.2, 0.3), platform_width=0, border_width=0.1,
+        #     flat_patch_sampling={
+        #         "slope_patches": FlatPatchSamplingCfg(
+        #             num_patches=1,
+        #             patch_radius=4.0,
+        #             max_height_diff=0.1,
+        #         )
+        #     }
+        # ),
+        # "hf_pyramid_slope_inv": terrain_gen.HfInvertedPyramidSlopedTerrainCfg(
+        #     proportion=0.2, slope_range=(0.2, 0.3), platform_width=0, border_width=0.1,
+        #     flat_patch_sampling={
+        #         "slope_inv_patches": FlatPatchSamplingCfg(
+        #             num_patches=1,
+        #             patch_radius=4.0,
+        #             max_height_diff=0.1,
+        #         )
+        #     }
+        # ),
     },
 )
 """Rough terrains configuration."""

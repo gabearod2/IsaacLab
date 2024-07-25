@@ -278,6 +278,7 @@ def feet_air_time(
 
     If the commands are small (i.e. the agent is not supposed to take a step), then the reward is zero.
     """
+
     # extract the used quantities (to enable type-hinting)
     contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]
     # compute the reward
@@ -285,7 +286,7 @@ def feet_air_time(
     last_air_time = contact_sensor.data.last_air_time[:, sensor_cfg.body_ids]
     reward = torch.sum((last_air_time - threshold) * first_contact, dim=1)
     # no reward for zero command
-    reward *= torch.norm(env.command_manager.get_command(command_name)[:, :2], dim=1) > 0.1
+    reward *= torch.norm(env.command_manager.get_command(command_name)[:, :2], dim=1) > 0.05
     return reward
 
 

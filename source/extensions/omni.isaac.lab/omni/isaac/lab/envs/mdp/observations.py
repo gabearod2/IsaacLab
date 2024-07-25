@@ -17,7 +17,7 @@ from typing import TYPE_CHECKING
 import omni.isaac.lab.utils.math as math_utils
 from omni.isaac.lab.assets import Articulation, RigidObject
 from omni.isaac.lab.managers import SceneEntityCfg
-from omni.isaac.lab.sensors import RayCaster
+from omni.isaac.lab.sensors import RayCaster, RayCasterCamera
 
 if TYPE_CHECKING:
     from omni.isaac.lab.envs import ManagerBasedEnv, ManagerBasedRLEnv
@@ -109,8 +109,6 @@ def joint_pos(env: ManagerBasedEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg("
     """
     # extract the used quantities (to enable type-hinting)
     asset: Articulation = env.scene[asset_cfg.name]
-    #print('joint positions')
-    #print(asset.data.joint_pos[:, asset_cfg.joint_ids])
     return asset.data.joint_pos[:, asset_cfg.joint_ids]
 
 
@@ -121,8 +119,6 @@ def joint_pos_rel(env: ManagerBasedEnv, asset_cfg: SceneEntityCfg = SceneEntityC
     """
     # extract the used quantities (to enable type-hinting)
     asset: Articulation = env.scene[asset_cfg.name]
-    #print('default joint pos')
-    #print(asset.data.default_joint_pos)
     return asset.data.joint_pos[:, asset_cfg.joint_ids] - asset.data.default_joint_pos[:, asset_cfg.joint_ids]
 
 
@@ -175,16 +171,13 @@ def height_scan(env: ManagerBasedEnv, sensor_cfg: SceneEntityCfg, offset: float 
     """
     # extract the used quantities (to enable type-hinting)
     sensor: RayCaster = env.scene.sensors[sensor_cfg.name]
-    #print(sensor.__str__())
-    #print("In order to understand this observation:")
-    #print(sensor.data.pos_w[:, 2].unsqueeze(1))
-    #print(sensor.data.ray_hits_w[..., 2])
-    #print(sensor.data.pos_w[:, 2].unsqueeze(1) - sensor.data.ray_hits_w[..., 2] - offset)
-    #obs_height_scan = sensor.data.pos_w[:, 2].unsqueeze(1) - sensor.data.ray_hits_w[..., 2] - offset
-    #print("Output Shape: ", obs_height_scan.shape)
-    # height scan: height = sensor_height - hit_point_z - offset
     return sensor.data.pos_w[:, 2].unsqueeze(1) - sensor.data.ray_hits_w[..., 2] - offset
 
+# def depth_scan(env: ManagerBasedEnv, sensor_cfg: SceneEntityCfg) -> torch.Tensor:
+#     """ Depth scan from the given sensor w.r.t. the sensor's frame"""
+#
+#     sensor: RayCaster = env.scene.sensors[sensor_cfg]
+#     return sensor.data.pos_w[:, 0].unsqueeze(1) - sensor.data.ray_hits_w[..., 0]
 
 def body_incoming_wrench(env: ManagerBasedEnv, asset_cfg: SceneEntityCfg) -> torch.Tensor:
     """Incoming spatial wrench on bodies of an articulation in the simulation world frame.
@@ -211,12 +204,8 @@ def last_action(env: ManagerBasedEnv, action_name: str | None = None) -> torch.T
     """
 
     if action_name is None:
-        #print('observations action')
-        #print(env.action_manager.action)
         return env.action_manager.action
     else:
-        #print('observation action')
-        #print(env.action_manager.get_term(action_name).raw_actions)
         return env.action_manager.get_term(action_name).raw_actions
 
 
