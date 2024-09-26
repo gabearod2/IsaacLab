@@ -5,11 +5,15 @@
 
 from omni.isaac.lab.utils import configclass
 
-from .rough_env_cfg import UnitreeGo2RoughEnvCfg
+from omni.isaac.lab_tasks.manager_based.locomotion.velocity.velocity_env_cfg_LIDAR import LocomotionVelocityRoughEnvCfg
 
+##
+# Pre-defined configs
+##
+from omni.isaac.lab_assets.unitree import UNITREE_GO2_CFG  # isort: skip
 
 @configclass
-class UnitreeGo2FlatEnvCfg(UnitreeGo2RoughEnvCfg):
+class UnitreeGo2FlatEnvCfg(LocomotionVelocityRoughEnvCfg):
     def __post_init__(self):
         # post init of parent
         super().__post_init__()
@@ -18,6 +22,14 @@ class UnitreeGo2FlatEnvCfg(UnitreeGo2RoughEnvCfg):
         self.scene.terrain.terrain_generator = None
         # no terrain curriculum
         self.curriculum.terrain_levels = None
+
+        self.scene.robot = UNITREE_GO2_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
+        self.scene.height_scanner.prim_path = "{ENV_REGEX_NS}/Robot/base"
+
+        # scale down the terrains because the robot is small - currently ok to leave
+        # self.scene.terrain.terrain_generator.sub_terrains["boxes"].grid_height_range = (0.025, 0.1)
+        # self.scene.terrain.terrain_generator.sub_terrains["random_rough"].noise_range = (0.01, 0.06)
+        # self.scene.terrain.terrain_generator.sub_terrains["random_rough"].noise_step = 0.01
 
 
 class UnitreeGo2FlatEnvCfg_PLAY(UnitreeGo2FlatEnvCfg):

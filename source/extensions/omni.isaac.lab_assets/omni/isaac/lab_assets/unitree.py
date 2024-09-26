@@ -17,7 +17,7 @@ Reference: https://github.com/unitreerobotics/unitree_ros
 """
 
 import omni.isaac.lab.sim as sim_utils
-from omni.isaac.lab.actuators import ActuatorNetMLPCfg, DCMotorCfg, ImplicitActuatorCfg
+from omni.isaac.lab.actuators import ActuatorNetMLPCfg, DCMotorCfg, ImplicitActuatorCfg, DelayedPDActuatorCfg
 from omni.isaac.lab.assets.articulation import ArticulationCfg
 from omni.isaac.lab.utils.assets import ISAACLAB_NUCLEUS_DIR
 
@@ -155,24 +155,34 @@ UNITREE_GO2_CFG = ArticulationCfg(
             "F[L,R]_thigh_joint": 1.1,
             "R[L,R]_thigh_joint": 1.1,
             ".*_calf_joint": -1.8,
-            # ".*_hip_joint": -0.126,
-            # ".*_thigh_joint": 1.22,
-            # ".*_calf_joint": -2.7,
         },
         joint_vel={".*": 0.0},
     ),
     soft_joint_pos_limit_factor=0.9,
     actuators={
-        "base_legs": DCMotorCfg(
+        """DC Motor Model"""
+        # "base_legs": DCMotorCfg(
+        #     joint_names_expr=[".*_hip_joint", ".*_thigh_joint", ".*_calf_joint"],
+        #     effort_limit=23.5,
+        #     saturation_effort=23.5,
+        #     velocity_limit=30.0,
+        #     stiffness=25.0,
+        #     damping=0.5,
+        #     friction=0.0,
+        # ),
+        """Delayed PD Actuator Model"""
+        "base_legs": DelayedPDActuatorCfg(
             joint_names_expr=[".*_hip_joint", ".*_thigh_joint", ".*_calf_joint"],
             effort_limit=23.5,
-            saturation_effort=23.5,
+            min_num_time_lags = 2,
+            max_num_time_lags = 4,
+            num_time_lags = 3,
             velocity_limit=30.0,
             stiffness=25.0,
             damping=0.5,
             friction=0.0,
         ),
-    },
+    }, # type: ignore
 )
 """Configuration of Unitree Go2 using DC-Motor actuator model."""
 
