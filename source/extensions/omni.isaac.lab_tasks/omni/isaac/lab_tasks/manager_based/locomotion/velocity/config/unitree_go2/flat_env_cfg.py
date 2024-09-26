@@ -16,12 +16,6 @@ class UnitreeGo2FlatEnvCfg(UnitreeGo2RoughEnvCfg):
         # change terrain to flat
         self.scene.terrain.terrain_type = "plane"
         self.scene.terrain.terrain_generator = None
-        # no height scan or base angular velocity
-        self.scene.height_scanner = None
-        self.scene.depth_camera = None
-        self.observations.policy.height_scan = None
-        self.observations.policy.depth_camera_scan = None
-        self.observations.policy.base_lin_vel = None
         # no terrain curriculum
         self.curriculum.terrain_levels = None
 
