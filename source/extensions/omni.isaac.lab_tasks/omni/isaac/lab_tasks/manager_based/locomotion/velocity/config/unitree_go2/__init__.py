@@ -5,7 +5,7 @@
 
 import gymnasium as gym
 
-from . import agents, flat_env_cfg, rough_env_cfg, rough_env_cfg_OSHA, flat_env_cfg_LIDAR
+from . import agents, flat_env_cfg, rough_env_cfg, rough_env_cfg_OSHA
 
 ##
 # Register Gym environments.
@@ -77,24 +77,24 @@ gym.register(
     },
 )
 
-gym.register(
-    id="Isaac-Velocity-Flat-Unitree-Go2-LIDAR",
-    entry_point="omni.isaac.lab.envs:ManagerBasedRLEnv",
-    disable_env_checker=True,
-    kwargs={
-        "env_cfg_entry_point": flat_env_cfg_LIDAR.UnitreeGo2FlatEnvCfg,
-        "rsl_rl_cfg_entry_point": agents.rsl_rl_cfg.UnitreeGo2FlatPPORunnerCfg,
-        "skrl_cfg_entry_point": f"{agents.__name__}:skrl_flat_ppo_cfg.yaml",
-    },
-)
+# gym.register(
+#     id="Isaac-Velocity-Flat-Unitree-Go2-LIDAR",
+#     entry_point="omni.isaac.lab.envs:ManagerBasedRLEnv",
+#     disable_env_checker=True,
+#     kwargs={
+#         "env_cfg_entry_point": flat_env_cfg_LIDAR.UnitreeGo2FlatEnvCfg,
+#         "rsl_rl_cfg_entry_point": agents.rsl_rl_cfg.UnitreeGo2FlatPPORunnerCfg,
+#         "skrl_cfg_entry_point": f"{agents.__name__}:skrl_flat_ppo_cfg.yaml",
+#     },
+# )
 
-gym.register(
-    id="Isaac-Velocity-Flat-Unitree-Go2-Play-LIDAR",
-    entry_point="omni.isaac.lab.envs:ManagerBasedRLEnv",
-    disable_env_checker=True,
-    kwargs={
-        "env_cfg_entry_point": flat_env_cfg_LIDAR.UnitreeGo2FlatEnvCfg_PLAY,
-        "rsl_rl_cfg_entry_point": agents.rsl_rl_cfg.UnitreeGo2FlatPPORunnerCfg,
-        "skrl_cfg_entry_point": f"{agents.__name__}:skrl_flat_ppo_cfg.yaml",
-    },
-)
+# gym.register(
+#     id="Isaac-Velocity-Flat-Unitree-Go2-Play-LIDAR",
+#     entry_point="omni.isaac.lab.envs:ManagerBasedRLEnv",
+#     disable_env_checker=True,
+#     kwargs={
+#         "env_cfg_entry_point": flat_env_cfg_LIDAR.UnitreeGo2FlatEnvCfg_PLAY,
+#         "rsl_rl_cfg_entry_point": agents.rsl_rl_cfg.UnitreeGo2FlatPPORunnerCfg,
+#         "skrl_cfg_entry_point": f"{agents.__name__}:skrl_flat_ppo_cfg.yaml",
+#     },
+# )

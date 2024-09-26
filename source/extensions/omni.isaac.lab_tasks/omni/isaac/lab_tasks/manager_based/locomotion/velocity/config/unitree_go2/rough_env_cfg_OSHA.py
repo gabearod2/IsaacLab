@@ -22,8 +22,6 @@ class UnitreeGo2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.scene.robot = UNITREE_GO2_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
         self.scene.height_scanner.prim_path = "{ENV_REGEX_NS}/Robot/base"
 
-        self.observations.policy.base_lin_vel = None
-
         # terminations
         self.terminations.base_contact.params["sensor_cfg"].body_names = "base"
 
