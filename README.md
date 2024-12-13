@@ -1,6 +1,6 @@
 # Isaac Lab - Go2
 
-This repository was forked from [NVIDIA's IsaacLab](https://github.com/isaac-sim/IsaacLab) to edit the reward structure, environments and more to enable the Sim2Real transfer using my ROS2 Humble RL Deployment framework, [go2_rl_ws](https://github.com/eppl-erau-db/go2_rl_ws). Currently, the training how allowed for deployment of a low level and navigation control policies, although only sporatic pronking has been achieved by the low level policies. Feel free to contribute.
+This repository was forked from [NVIDIA's IsaacLab](https://github.com/isaac-sim/IsaacLab) to edit the reward structure, environments, and more to enable the Sim2Real transfer using my ROS2 Humble RL Deployment framework, [go2_rl_ws](https://github.com/eppl-erau-db/go2_rl_ws). Currently, the training how allowed for deployment of a low level and navigation control policies, although only sporatic pronking has been achieved by the low level policies. Feel free to contribute.
 
 You can find the related documentation here: [Isaac Lab Documentation Page](https://isaac-sim.github.io/IsaacLab)
 
